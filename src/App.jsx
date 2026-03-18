@@ -35,8 +35,8 @@ const GALLERY_PHOTOS = [
   { img: gallery08, cap: "Marcio Faraco", sub: "Préparateur mental BJJ" },
   { img: gallery09, cap: "Nicolas Renier", sub: "Pionnier Luta Livre France" },
   { img: gallery10, cap: "Immersion Brésil", sub: "BJJ College" },
-  { img: gallery11, cap: "BJJ College", sub: "Brésil — São Paulo" },
-  { img: gallery12, cap: "BJJ College", sub: "Brésil — São Paulo" },
+  { img: gallery11, cap: "Diogo Reis Baby Shark", sub: "ADCC & One Championship" },
+  { img: gallery12, cap: "Nicolas Renier", sub: "Fondateur NRFight — Pionnier Luta Livre" },
   { img: gallery13, cap: "BJJ College", sub: "Brésil — São Paulo" },
 ];
 
