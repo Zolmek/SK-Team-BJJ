@@ -219,6 +219,23 @@ img { max-width:100%; display:block; }
 .stat-l { font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,.4); margin-top:5px; }
 
 
+
+/* ── KIDS ── */
+.kids-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:24px 0; }
+.kids-card { background:var(--dark2); padding:28px 24px; position:relative; overflow:hidden; }
+.kids-card-age { font-family:var(--fd); font-size:48px; color:rgba(192,57,43,.15); line-height:1; margin-bottom:8px; }
+.kids-card-title { font-family:var(--fd); font-size:22px; letter-spacing:.5px; color:var(--white); margin-bottom:8px; }
+.kids-card-sub { font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:14px; }
+.kids-card-desc { font-size:13px; line-height:1.75; color:rgba(255,255,255,.45); }
+.kids-card-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:16px; }
+.kids-card-tag { font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 8px; border:1px solid rgba(192,57,43,.2); color:rgba(192,57,43,.8); }
+.kids-values { display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:20px 0; }
+.kids-value { background:var(--dark2); padding:18px 16px; display:flex; align-items:center; gap:12px; }
+.kids-value-icon { width:32px; height:32px; border:1px solid rgba(192,57,43,.3); display:flex; align-items:center; justify-content:center; color:var(--red); flex-shrink:0; }
+.kids-value-text { font-size:13px; color:rgba(255,255,255,.55); line-height:1.5; }
+.kids-value-text strong { display:block; font-family:var(--fc); font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--white); margin-bottom:3px; }
+@media(max-width:600px){ .kids-grid { grid-template-columns:1fr; } .kids-values { grid-template-columns:1fr; } }
+
 /* ── TESTI BAR ── */
 .testi-bar{background:#111;border-top:3px solid var(--red);border-bottom:1px solid var(--border);}
 .testi-inner{max-width:1240px;margin:0 auto;padding:40px 32px;display:flex;gap:48px;align-items:stretch;}
@@ -621,6 +638,94 @@ function GalleryWithLightbox({ photos }) {
 /* ══════════════════════════════════════
    MODAL CONTENTS — une fonction par modale
 ══════════════════════════════════════ */
+
+function ModalKids({ open, onClose, openContact }) {
+  if (!open) return null;
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-panel" onClick={e => e.stopPropagation()}>
+        <div className="modal-close">
+          <span className="modal-close-title">KIDS & ADOS</span>
+          <button className="modal-close-btn" onClick={onClose} aria-label="Fermer">&times;</button>
+        </div>
+        <div className="modal-body">
+          <div className="m-tag">Jeunes pratiquants</div>
+          <h2 className="m-h2">KIDS &amp;<br/>ADOS BJJ</h2>
+          <div className="m-divider"/>
+          <p className="m-text">Le Brazilian Jiu-Jitsu est un sport idéal pour les enfants et les adolescents. Il développe la confiance en soi, la discipline, la coordination et l’esprit d’équipe dans un environnement sécurisé et bienveillant.</p>
+
+          <div className="kids-grid">
+            <div className="kids-card">
+              <div className="kids-card-age">6–9</div>
+              <div className="kids-card-title">Mini BJJ</div>
+              <div className="kids-card-sub">6 à 9 ans</div>
+              <p className="kids-card-desc">Découverte du JJB par le jeu. Développement de la motricité, de l’équilibre et de la coordination. Séances ludiques, progressives et sécurisées.</p>
+              <div className="kids-card-tags">
+                {["Jeux","Motricité","Confiance","Sécurité"].map(t => <span key={t} className="kids-card-tag">{t}</span>)}
+              </div>
+            </div>
+            <div className="kids-card">
+              <div className="kids-card-age">10–14</div>
+              <div className="kids-card-title">Junior BJJ</div>
+              <div className="kids-card-sub">10 à 14 ans</div>
+              <p className="kids-card-desc">Apprentissage des techniques fondamentales du JJB. Introduction au sparring encadré. Développement de la discipline, du respect et de la persevérance.</p>
+              <div className="kids-card-tags">
+                {["Technique","Sparring","Discipline","Respect"].map(t => <span key={t} className="kids-card-tag">{t}</span>)}
+              </div>
+            </div>
+            <div className="kids-card">
+              <div className="kids-card-age">15–17</div>
+              <div className="kids-card-title">Ados BJJ</div>
+              <div className="kids-card-sub">15 à 17 ans</div>
+              <p className="kids-card-desc">Programme technique avancé, sparring progressif et préparation à la compétition. Passage de grades possible. Transition vers les cours adultes.</p>
+              <div className="kids-card-tags">
+                {["Avancé","Compétition","Grades","Performance"].map(t => <span key={t} className="kids-card-tag">{t}</span>)}
+              </div>
+            </div>
+          </div>
+
+          <div className="m-section">
+            <div className="m-section-title">Les bénéfices du BJJ pour les jeunes</div>
+            <div className="kids-values">
+              {[
+                {icon:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z", title:"Confiance en soi", desc:"Le JJB apprend à gérer la pression et à croire en ses capacités"},
+                {icon:"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75", title:"Esprit d’équipe", desc:"Apprendre à travailler avec un partenaire, respect mutuel"},
+                {icon:"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5", title:"Discipline", desc:"Régularité, écoute et respect des règles sur le tatami et dans la vie"},
+                {icon:"M22 12h-4l-3 9L9 3l-3 9H2", title:"Condition physique", desc:"Force, souplesse, coordination et endurance développés naturellement"},
+              ].map(v => (
+                <div key={v.title} className="kids-value">
+                  <div className="kids-value-icon">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d={v.icon}/></svg>
+                  </div>
+                  <div className="kids-value-text"><strong>{v.title}</strong>{v.desc}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="m-section">
+            <div className="m-section-title">Informations pratiques</div>
+            <ul className="m-list">
+              <li>Cours encadrés par Karim Sadat, Ceinture Noire 1er Dan IBJJF</li>
+              <li>Groupes homogènes par tranches d’âge</li>
+              <li>Tenue : kimono (gi) fourni pour le 1er cours</li>
+              <li>Licence FFJDA obligatoire (assurance incluse)</li>
+              <li>Tarifs spéciaux famille disponibles</li>
+              <li>1er cours d’essai gratuit</li>
+            </ul>
+          </div>
+
+          <div className="m-cta">
+            <button className="btn-red" onClick={() => { onClose(); setTimeout(openContact, 200); }}>
+              Réserver un essai gratuit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ModalDisciplines({ open, onClose }) {
   if (!open) return null;
   return (
@@ -940,6 +1045,7 @@ export default function App() {
   const MODALS = ["disciplines","coach","programme","horaires","club","contact"];
   const NAV_ITEMS = [
     {id:"disciplines",l:"Disciplines"},
+  {id:"kids",l:"Kids & Ados"},
     {id:"coach",l:"Coach"},
     {id:"programme",l:"Programme"},
     {id:"horaires",l:"Horaires"},
@@ -955,7 +1061,8 @@ export default function App() {
     {id:"programme",n:"03",icon:"M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2 M9 5a2 2 0 002 2h2a2 2 0 002-2 M9 5a2 2 0 012-2h2a2 2 0 012 2",t:"Programme",d:"34 séances structurées sur 3 mésocycles selon le référentiel SK TEAM BJJ. Adultes débutants 15+."},
     {id:"horaires",n:"04",icon:"M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 6v6l4 2",t:"Horaires & Tarifs",d:"Lundi et Mercredi 19h30–20h30. Tarifs à partir de 150€/an. 1er cours d’essai gratuit."},
     {id:"club",n:"05",icon:"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75",t:"Le Club",d:"Association loi 1901, affiliée FFJDA, fondée à Clamart. Un cadre structuré et bienveillant pour tous les niveaux."},
-    {id:"contact",n:"06",icon:"M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z",t:"Essai Gratuit",d:"Premier cours gratuit, sans engagement. Venez découvrir le JJB à Clamart dans une ambiance technique et bienveillante."},
+    {id:"kids",n:"06",icon:"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75",t:"Kids & Ados",d:"BJJ pour les 6–17 ans. 3 groupes par âge : Mini (6-9), Junior (10-14), Ados (15-17). Développement, discipline et confiance en soi."},
+    {id:"contact",n:"07",icon:"M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z",t:"Essai Gratuit",d:"Premier cours gratuit, sans engagement. Venez découvrir le JJB à Clamart dans une ambiance technique et bienveillante."},
   ];
 
   return (
@@ -963,6 +1070,7 @@ export default function App() {
       <style>{CSS}</style>
 
       {/* MODALES */}
+      <ModalKids        open={modal==="kids"}        onClose={close} openContact={() => open("contact")}/>
       <ModalDisciplines open={modal==="disciplines"} onClose={close}/>
       <ModalCoach       open={modal==="coach"}       onClose={close}/>
       <ModalProgramme   open={modal==="programme"}   onClose={close}/>
