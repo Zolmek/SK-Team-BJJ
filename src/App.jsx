@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import skLogo  from "./assets/logo.png";
 import coachPhoto from "./assets/coach.jpg";
@@ -237,8 +237,8 @@ img { max-width:100%; display:block; }
 .priv-items li::before { content:""; width:4px; height:4px; background:var(--red); border-radius:50%; flex-shrink:0; }
 
 /* ── DIAPORAMA PAGE PRINCIPALE ── */
-.home-slider { position:relative; overflow:hidden; background:#000; margin-top:48px; }
-.home-slider-img { width:100%; height:360px; object-fit:cover; display:block; transition:opacity .5s; }
+.home-slider { position:relative; overflow:hidden; background:#000; margin-top:48px; border:1px solid var(--border); }
+.home-slider-img { width:100%; height:480px; object-fit:cover; object-position:center top; display:block; }
 .home-slider-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(0,0,0,.7) 0%,transparent 60%); pointer-events:none; }
 .home-slider-info { position:absolute; bottom:32px; left:32px; z-index:2; }
 .home-slider-cap { font-family:var(--fd); font-size:22px; letter-spacing:1px; color:#fff; line-height:1; }
@@ -578,10 +578,17 @@ function SKLogo({ size=44 }) {
 function HomeSlider({ photos }) {
   const [slide, setSlide] = useState(0);
   const [paused, setPaused] = useState(false);
+  const slideRef = React.useRef(0);
+
+  useEffect(() => {
+    slideRef.current = slide;
+  }, [slide]);
 
   useEffect(() => {
     if (paused) return;
-    const t = setInterval(() => setSlide(i => (i + 1) % photos.length), 3500);
+    const t = setInterval(() => {
+      setSlide(prev => (prev + 1) % photos.length);
+    }, 3000);
     return () => clearInterval(t);
   }, [paused, photos.length]);
 
@@ -590,7 +597,7 @@ function HomeSlider({ photos }) {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <img className="home-slider-img" src={photos[slide].img} alt={photos[slide].cap} key={slide}/>
+      <img className="home-slider-img" src={photos[slide].img} alt={photos[slide].cap} style={{objectFit:"cover",objectPosition:"center 20%"}} loading="lazy"/>
       <div className="home-slider-overlay"/>
       <div className="home-slider-info">
         <div className="home-slider-cap">{photos[slide].cap}</div>
