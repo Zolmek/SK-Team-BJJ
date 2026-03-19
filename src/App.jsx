@@ -220,6 +220,39 @@ img { max-width:100%; display:block; }
 
 
 
+
+/* ── COURS PRIVÉS ── */
+.priv-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:24px 0; }
+.priv-card { background:var(--dark2); padding:32px 24px; text-align:center; transition:background .2s; }
+.priv-card:hover { background:#1a0a0a; }
+.priv-card.featured { background:rgba(192,57,43,.08); border:1px solid rgba(192,57,43,.2); }
+.priv-price { font-family:var(--fd); font-size:56px; letter-spacing:-1px; color:var(--white); line-height:1; }
+.priv-price sup { font-size:.35em; vertical-align:super; color:var(--muted); }
+.priv-price sub { font-size:.28em; color:var(--muted); }
+.priv-label { font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin:10px 0 18px; }
+.priv-eco { font-family:var(--fc); font-size:11px; font-weight:700; letter-spacing:1px; color:var(--red); margin-bottom:14px; }
+.priv-items { list-style:none; text-align:left; }
+.priv-items li { font-size:12px; color:rgba(255,255,255,.4); padding:5px 0; display:flex; align-items:center; gap:8px; border-bottom:1px solid var(--border); }
+.priv-items li:last-child { border-bottom:none; }
+.priv-items li::before { content:""; width:4px; height:4px; background:var(--red); border-radius:50%; flex-shrink:0; }
+
+/* ── DIAPORAMA PAGE PRINCIPALE ── */
+.home-slider { position:relative; overflow:hidden; background:#000; margin-top:48px; }
+.home-slider-img { width:100%; height:360px; object-fit:cover; display:block; transition:opacity .5s; }
+.home-slider-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(0,0,0,.7) 0%,transparent 60%); pointer-events:none; }
+.home-slider-info { position:absolute; bottom:32px; left:32px; z-index:2; }
+.home-slider-cap { font-family:var(--fd); font-size:22px; letter-spacing:1px; color:#fff; line-height:1; }
+.home-slider-sub { font-family:var(--fc); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.6); margin-top:6px; }
+.home-slider-prev, .home-slider-next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.2); color:#fff; width:44px; height:44px; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; z-index:2; }
+.home-slider-prev { left:16px; }
+.home-slider-next { right:16px; }
+.home-slider-prev:hover, .home-slider-next:hover { background:var(--red); border-color:var(--red); }
+.home-slider-dots { position:absolute; bottom:16px; right:20px; display:flex; gap:6px; z-index:2; }
+.home-slider-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.3); border:none; cursor:pointer; padding:0; transition:all .3s; }
+.home-slider-dot.active { background:var(--red); width:18px; border-radius:3px; }
+.home-slider-counter { position:absolute; top:16px; right:20px; font-family:var(--fc); font-size:11px; font-weight:700; letter-spacing:2px; color:rgba(255,255,255,.5); z-index:2; }
+@media(max-width:768px){ .home-slider-img{height:240px;} .priv-grid{grid-template-columns:1fr;} }
+
 /* ── KIDS ── */
 .kids-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:24px 0; }
 .kids-card { background:var(--dark2); padding:28px 24px; position:relative; overflow:hidden; }
@@ -540,6 +573,41 @@ function SKLogo({ size=44 }) {
 }
 
 
+
+/* ── Diaporama page principale ── */
+function HomeSlider({ photos }) {
+  const [slide, setSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const t = setInterval(() => setSlide(i => (i + 1) % photos.length), 3500);
+    return () => clearInterval(t);
+  }, [paused, photos.length]);
+
+  return (
+    <div className="home-slider"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <img className="home-slider-img" src={photos[slide].img} alt={photos[slide].cap} key={slide}/>
+      <div className="home-slider-overlay"/>
+      <div className="home-slider-info">
+        <div className="home-slider-cap">{photos[slide].cap}</div>
+        <div className="home-slider-sub">{photos[slide].sub}</div>
+      </div>
+      <button className="home-slider-prev" onClick={() => setSlide(i => (i-1+photos.length)%photos.length)} aria-label="Précédent">‹</button>
+      <button className="home-slider-next" onClick={() => setSlide(i => (i+1)%photos.length)} aria-label="Suivant">›</button>
+      <div className="home-slider-counter">{slide+1} / {photos.length}</div>
+      <div className="home-slider-dots">
+        {photos.map((_,i) => (
+          <button key={i} className={"home-slider-dot"+(i===slide?" active":"")} onClick={() => setSlide(i)} aria-label={"Photo "+(i+1)}/>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ── Galerie avec diaporama ── */
 function GalleryWithLightbox({ photos }) {
   const [active, setActive] = useState(null);
@@ -638,6 +706,132 @@ function GalleryWithLightbox({ photos }) {
 /* ══════════════════════════════════════
    MODAL CONTENTS — une fonction par modale
 ══════════════════════════════════════ */
+
+
+function ModalPrive({ open, onClose }) {
+  const [discipline, setDiscipline] = useState(null);
+  if (!open) return null;
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-panel" onClick={e => e.stopPropagation()}>
+        <div className="modal-close">
+          <span className="modal-close-title">COURS PRIVÉS</span>
+          <button className="modal-close-btn" onClick={onClose} aria-label="Fermer">&times;</button>
+        </div>
+        <div className="modal-body">
+          <div className="m-tag">Suivi personnalisé</div>
+          <h2 className="m-h2">COURS<br/>PRIVÉS</h2>
+          <div className="m-divider"/>
+
+          {/* ── CHOIX DISCIPLINE ── */}
+          <div style={{marginBottom:28}}>
+            <p style={{fontFamily:"var(--fc)",fontSize:11,fontWeight:700,letterSpacing:"3px",textTransform:"uppercase",color:"var(--muted)",marginBottom:14}}>Choisissez votre discipline</p>
+            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:1,background:"var(--border)",border:"1px solid var(--border)"}}>
+              {[
+                {id:"bjj",label:"Jiu-Jitsu Brésilien",icon:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",desc:"Gi & No-Gi"},
+                {id:"grappling",label:"Grappling",icon:"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",desc:"No-Gi · MMA Base"},
+              ].map(d => (
+                <button key={d.id} onClick={() => setDiscipline(d.id)}
+                  style={{
+                    background: discipline===d.id ? "rgba(192,57,43,.15)" : "var(--dark2)",
+                    border: discipline===d.id ? "2px solid var(--red)" : "2px solid transparent",
+                    padding:"24px 20px", cursor:"pointer", textAlign:"center",
+                    transition:"all .2s", color:"var(--white)"
+                  }}>
+                  <div style={{display:"flex",justifyContent:"center",marginBottom:12}}>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={discipline===d.id?"var(--red)":"rgba(255,255,255,.4)"} strokeWidth="2">
+                      <path d={d.icon}/>
+                    </svg>
+                  </div>
+                  <div style={{fontFamily:"var(--fd)",fontSize:20,letterSpacing:"1px",lineHeight:1.1,marginBottom:6}}>{d.label}</div>
+                  <div style={{fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",color:discipline===d.id?"var(--red)":"var(--muted)"}}>{d.desc}</div>
+                  {discipline===d.id && (
+                    <div style={{marginTop:10,fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"1.5px",textTransform:"uppercase",color:"var(--red)"}}>✓ Sélectionné</div>
+                  )}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* ── CONTENU SELON DISCIPLINE ── */}
+          {discipline && (
+            <div style={{padding:"18px 20px",background:"rgba(192,57,43,.06)",border:"1px solid rgba(192,57,43,.15)",marginBottom:20}}>
+              <div style={{fontFamily:"var(--fd)",fontSize:16,letterSpacing:"1px",color:"var(--white)",marginBottom:8}}>
+                {discipline==="bjj" ? "Brazilian Jiu-Jitsu — Gi & No-Gi" : "Grappling — No-Gi"}
+              </div>
+              <p style={{fontSize:13,color:"rgba(255,255,255,.5)",lineHeight:1.75}}>
+                {discipline==="bjj"
+                  ? "Travail des positions, passages de garde, soumissions et défenses. Adapté à votre niveau, du débutant au compétiteur. Cours en kimono (Gi) ou sans (No-Gi) selon votre objectif."
+                  : "Techniques de lutte, étranglements et clés articulaires sans kimono. Idéal pour la compétition No-Gi, le MMA ou renforcer votre jeu au sol. Approche dynamique et efficace."
+                }
+              </p>
+            </div>
+          )}
+
+          <p className="m-text">Un cours privé avec Karim Sadat, c’est une heure entière consacrée uniquement à toi. Technique personnalisée, correction en temps réel, progression accélérée. Idéal pour corriger des points précis, préparer une compétition ou progresser plus vite.</p>
+
+          <div className="priv-grid">
+            <div className="priv-card">
+              <div className="priv-price"><sup>€</sup>50</div>
+              <div className="priv-label">1 cours</div>
+              <ul className="priv-items">
+                <li>1 heure avec Karim Sadat</li>
+                <li>Technique personnalisée</li>
+                <li>Correction en temps réel</li>
+                <li>Sans engagement</li>
+              </ul>
+            </div>
+            <div className="priv-card featured">
+              <div className="priv-price"><sup>€</sup>450</div>
+              <div className="priv-label">10 cours</div>
+              <div className="priv-eco">Économie de 50€</div>
+              <ul className="priv-items">
+                <li>10 heures de coaching</li>
+                <li>Programme structuré</li>
+                <li>Suivi de progression</li>
+                <li>Valable 6 mois</li>
+              </ul>
+            </div>
+            <div className="priv-card">
+              <div className="priv-price"><sup>€</sup>800</div>
+              <div className="priv-label">20 cours</div>
+              <div className="priv-eco">Économie de 200€</div>
+              <ul className="priv-items">
+                <li>20 heures de coaching</li>
+                <li>Programme compétition</li>
+                <li>Bilan mensuel inclus</li>
+                <li>Valable 12 mois</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="m-section">
+            <div className="m-section-title">Ce que comprend un cours privé</div>
+            <ul className="m-list">
+              <li>1 heure de cours individuel avec Karim Sadat, CN 1er Dan IBJJF</li>
+              <li>Analyse de tes points forts et axes de progression</li>
+              <li>Technique personnalisée selon ton niveau et tes objectifs</li>
+              <li>Drilling intensif sur les techniques ciblées</li>
+              <li>Sparring dirigé et correction en temps réel</li>
+              <li>Compte-rendu et plan de travail personnel</li>
+            </ul>
+          </div>
+
+          <div className="m-section">
+            <div className="m-section-title">Réserver votre cours</div>
+            <p className="m-text">Les cours privés se déroulent à Clamart (92140). Contactez-nous pour convenir d’un créneau.</p>
+            <div className="social-links" style={{marginTop:16}}>
+              <a href={"mailto:sk.team.jjb@gmail.com?subject=Réservation cours privé " + (discipline==="bjj" ? "BJJ" : discipline==="grappling" ? "Grappling" : "") + " SK TEAM JJB"} className="social-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Réserver par email
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function ModalKids({ open, onClose, openContact }) {
   if (!open) return null;
@@ -1046,6 +1240,7 @@ export default function App() {
   const NAV_ITEMS = [
     {id:"disciplines",l:"Disciplines"},
   {id:"kids",l:"Kids & Ados"},
+  {id:"prive",l:"Cours Privés"},
     {id:"coach",l:"Coach"},
     {id:"programme",l:"Programme"},
     {id:"horaires",l:"Horaires"},
@@ -1070,6 +1265,7 @@ export default function App() {
       <style>{CSS}</style>
 
       {/* MODALES */}
+      <ModalPrive       open={modal==="prive"}      onClose={close}/>
       <ModalKids        open={modal==="kids"}        onClose={close} openContact={() => open("contact")}/>
       <ModalDisciplines open={modal==="disciplines"} onClose={close}/>
       <ModalCoach       open={modal==="coach"}       onClose={close}/>
@@ -1168,6 +1364,15 @@ export default function App() {
               </button>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* DIAPORAMA IMMERSION */}
+      <section style={{background:"var(--dark)",borderTop:"1px solid var(--border)",padding:"60px 0"}}>
+        <div className="home-section-inner">
+          <div className="home-section-tag">Immersion Brésil</div>
+          <h2 className="home-section-title" style={{marginBottom:0}}>3 MOIS AU<br/>BJJ COLLEGE</h2>
+          <HomeSlider photos={GALLERY_PHOTOS}/>
         </div>
       </section>
 
