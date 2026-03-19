@@ -22,22 +22,47 @@ import gallery10 from "./assets/gallery_10.jpg";
 import gallery11 from "./assets/gallery_11.jpg";
 import gallery12 from "./assets/gallery_12.jpg";
 import gallery13 from "./assets/gallery_13.jpg";
+import gallery14 from "./assets/gallery_14.jpg";
+import gallery15 from "./assets/gallery_15.jpg";
+import gallery16 from "./assets/gallery_16.jpg";
+import gallery17 from "./assets/gallery_17.jpg";
+import gallery18 from "./assets/gallery_18.jpg";
+import gallery19 from "./assets/gallery_19.jpg";
+import gallery20 from "./assets/gallery_20.jpg";
+import gallery21 from "./assets/gallery_21.jpg";
+import gallery22 from "./assets/gallery_22.jpg";
+import gallery23 from "./assets/gallery_23.jpg";
+import gallery24 from "./assets/gallery_24.jpg";
+import gallery25 from "./assets/gallery_25.jpg";
 
+// Images pré-composées 1920×1440 — photo nette centrée sur fond flouté sombre
 const GALLERY_PHOTOS = [
-  { img: gallery00, cap: "BJJ College", sub: "São Paulo, Brésil" },
-  { img: gallery01, cap: "BJJ College", sub: "São Paulo, Brésil" },
-  { img: gallery02, cap: "Photo de groupe", sub: "BJJ College by Melqui Galvão" },
-  { img: gallery03, cap: "Entraînement", sub: "BJJ College" },
-  { img: gallery04, cap: "Immersion Brésil", sub: "BJJ College" },
-  { img: gallery05, cap: "Immersion Brésil", sub: "BJJ College" },
-  { img: gallery06, cap: "Immersion Brésil", sub: "BJJ College" },
-  { img: gallery07, cap: "Joao Miyao", sub: "Stage Z-TEAM Paris" },
-  { img: gallery08, cap: "Marcio Faraco", sub: "Préparateur mental BJJ" },
-  { img: gallery09, cap: "Nicolas Renier", sub: "Pionnier Luta Livre France" },
-  { img: gallery10, cap: "Immersion Brésil", sub: "BJJ College" },
-  { img: gallery11, cap: "Diogo Reis Baby Shark", sub: "ADCC & One Championship" },
-  { img: gallery12, cap: "Nicolas Renier", sub: "Fondateur NRFight — Pionnier Luta Livre" },
-  { img: gallery13, cap: "BJJ College", sub: "Brésil — São Paulo" },
+  { img: gallery00, cap: "Nicolas Renier",           sub: "Fondateur NRFight — Pionnier Luta Libre" },
+  { img: gallery01, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  { img: gallery02, cap: "Entraînement Gi",          sub: "BJJ College by Melqui Galvão" },
+  { img: gallery03, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  { img: gallery04, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  { img: gallery05, cap: "Photo de groupe — No-Gi", sub: "BJJ College by Melqui Galvão" },
+  { img: gallery06, cap: "Photo de groupe — No-Gi", sub: "BJJ College — São Paulo" },
+  { img: gallery07, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  { img: gallery08, cap: "Marcio Faraco",            sub: "Préparateur mental BJJ" },
+  { img: gallery09, cap: "Joao Miyao",               sub: "Stage Z-TEAM Paris" },
+  { img: gallery10, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  { img: gallery11, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  { img: gallery12, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  { img: gallery13, cap: "Marcio Faraco",            sub: "Préparateur mental BJJ" },
+  { img: gallery14, cap: "Photo de groupe — Gi",    sub: "BJJ College by Melqui Galvão" },
+  { img: gallery15, cap: "Ceintures noires",         sub: "BJJ College — São Paulo" },
+  { img: gallery16, cap: "Ceintures noires — Gi",   sub: "BJJ College by Melqui Galvão" },
+  { img: gallery17, cap: "Immersion No-Gi",          sub: "BJJ College — Melqui Galvão" },
+  { img: gallery18, cap: "Entraînement No-Gi",       sub: "BJJ College — São Paulo" },
+  { img: gallery19, cap: "Préparation physique",     sub: "BJJ College by Melqui Galvão" },
+  { img: gallery20, cap: "Tatami — Gi",              sub: "BJJ College — São Paulo" },
+  { img: gallery21, cap: "Entraînement Gi",          sub: "BJJ College by Melqui Galvão" },
+  { img: gallery22, cap: "Immersion Brésil",         sub: "BJJ College by Melqui Galvão" },
+  { img: gallery23, cap: "Ceintures noires — Gi",   sub: "BJJ College by Melqui Galvão" },
+  { img: gallery24, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  { img: gallery25, cap: "Entraînement Gi",          sub: "BJJ College — São Paulo" },
 ];
 
 const IMG = {
@@ -237,21 +262,47 @@ img { max-width:100%; display:block; }
 .priv-items li::before { content:""; width:4px; height:4px; background:var(--red); border-radius:50%; flex-shrink:0; }
 
 /* ── DIAPORAMA PAGE PRINCIPALE ── */
-.home-slider { position:relative; overflow:hidden; background:#000; margin-top:48px; border:1px solid var(--border); }
-.home-slider-img { width:100%; height:480px; object-fit:cover; object-position:center top; display:block; }
-.home-slider-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(0,0,0,.7) 0%,transparent 60%); pointer-events:none; }
-.home-slider-info { position:absolute; bottom:32px; left:32px; z-index:2; }
-.home-slider-cap { font-family:var(--fd); font-size:22px; letter-spacing:1px; color:#fff; line-height:1; }
-.home-slider-sub { font-family:var(--fc); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.6); margin-top:6px; }
-.home-slider-prev, .home-slider-next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,.5); border:1px solid rgba(255,255,255,.2); color:#fff; width:44px; height:44px; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; z-index:2; }
-.home-slider-prev { left:16px; }
-.home-slider-next { right:16px; }
-.home-slider-prev:hover, .home-slider-next:hover { background:var(--red); border-color:var(--red); }
-.home-slider-dots { position:absolute; bottom:16px; right:20px; display:flex; gap:6px; z-index:2; }
-.home-slider-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.3); border:none; cursor:pointer; padding:0; transition:all .3s; }
-.home-slider-dot.active { background:var(--red); width:18px; border-radius:3px; }
-.home-slider-counter { position:absolute; top:16px; right:20px; font-family:var(--fc); font-size:11px; font-weight:700; letter-spacing:2px; color:rgba(255,255,255,.5); z-index:2; }
-@media(max-width:768px){ .home-slider-img{height:240px;} .priv-grid{grid-template-columns:1fr;} }
+.home-slider {
+  position:relative; overflow:hidden;
+  background:#0d0d0d;
+  margin-top:36px;
+  border:1px solid var(--border);
+  height:360px;         /* hauteur réduite — compact sur la page */
+}
+.home-slider-track { position:absolute; inset:0; }
+.home-slider-img {
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:contain; object-position:center center;
+  display:block;
+  opacity:0;
+  transition:opacity .6s ease;
+  will-change:opacity;
+}
+.home-slider-img.active { opacity:1; }
+/* fond flouté de la photo courante — comble les bandes latérales */
+.home-slider-bg {
+  position:absolute; inset:0;
+  background-size:cover; background-position:center;
+  filter:blur(18px) brightness(0.28);
+  transform:scale(1.05);
+  z-index:0;
+}
+.home-slider-overlay { position:absolute; inset:0; background:linear-gradient(to right,rgba(0,0,0,.55) 0%,transparent 50%); pointer-events:none; z-index:2; }
+.home-slider-info { position:absolute; bottom:22px; left:24px; z-index:4; }
+.home-slider-cap { font-family:var(--fd); font-size:20px; letter-spacing:1px; color:#fff; line-height:1; text-shadow:0 2px 8px rgba(0,0,0,.7); }
+.home-slider-sub { font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.6); margin-top:5px; }
+.home-slider-prev, .home-slider-next { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.2); color:#fff; width:40px; height:40px; font-size:20px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .2s; z-index:4; }
+.home-slider-prev { left:12px; }
+.home-slider-next { right:12px; }
+.home-slider-prev:hover, .home-slider-next:hover { background:var(--red); border-color:var(--red); transform:translateY(-50%) scale(1.05); }
+.home-slider-dots { position:absolute; bottom:10px; right:16px; display:flex; gap:5px; z-index:4; }
+.home-slider-dot { width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,.3); border:none; cursor:pointer; padding:0; transition:all .3s; }
+.home-slider-dot.active { background:var(--red); width:16px; border-radius:3px; }
+.home-slider-counter { position:absolute; top:12px; right:14px; font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:2px; color:rgba(255,255,255,.5); z-index:4; background:rgba(0,0,0,.45); padding:2px 7px; }
+.home-slider-progress { position:absolute; bottom:0; left:0; height:2px; background:var(--red); z-index:4; transition:width linear; }
+.home-slider-pause { position:absolute; top:12px; left:12px; background:rgba(192,57,43,.85); padding:2px 8px; font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#fff; z-index:4; }
+@media(max-width:768px){ .home-slider{ height:240px; } .priv-grid{grid-template-columns:1fr;} }
 
 /* ── KIDS ── */
 .kids-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:24px 0; }
@@ -575,109 +626,263 @@ function SKLogo({ size=44 }) {
 
 
 /* ── Diaporama page principale ── */
+const SLIDE_DURATION = 4000;
 function HomeSlider({ photos }) {
-  const [slide, setSlide] = useState(0);
+  const [slide, setSlide]   = useState(0);
   const [paused, setPaused] = useState(false);
-  const slideRef = React.useRef(0);
+  const [progress, setProgress] = useState(0);
+  const timerRef    = React.useRef(null);
+  const rafRef      = React.useRef(null);
+  const startTs     = React.useRef(null);
+  const elapsedMs   = React.useRef(0);
 
-  useEffect(() => {
-    slideRef.current = slide;
-  }, [slide]);
+  const goTo = idx => {
+    const next = typeof idx === "function" ? idx(slide) : idx;
+    setSlide(next);
+    setProgress(0);
+    elapsedMs.current = 0;
+  };
 
+  /* barre de progression via rAF */
   useEffect(() => {
+    cancelAnimationFrame(rafRef.current);
     if (paused) return;
-    const t = setInterval(() => {
-      setSlide(prev => (prev + 1) % photos.length);
-    }, 3000);
-    return () => clearInterval(t);
-  }, [paused, photos.length]);
+    startTs.current = performance.now();
+    const tick = () => {
+      const spent = elapsedMs.current + (performance.now() - startTs.current);
+      setProgress(Math.min((spent / SLIDE_DURATION) * 100, 100));
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [paused, slide]);
+
+  /* avance automatique */
+  useEffect(() => {
+    clearTimeout(timerRef.current);
+    if (paused) return;
+    const remaining = SLIDE_DURATION - elapsedMs.current;
+    timerRef.current = setTimeout(() => {
+      setSlide(s => (s + 1) % photos.length);
+      setProgress(0);
+      elapsedMs.current = 0;
+    }, Math.max(remaining, 200));
+    return () => clearTimeout(timerRef.current);
+  }, [paused, slide, photos.length]);
+
+  /* mémorise le temps écoulé au moment de la pause */
+  const handlePause = () => {
+    elapsedMs.current += performance.now() - (startTs.current || performance.now());
+    setPaused(true);
+  };
+  const handleResume = () => {
+    startTs.current = performance.now();
+    setPaused(false);
+  };
+
+  /* préchargement */
+  useEffect(() => {
+    [photos[(slide+1)%photos.length].img, photos[(slide-1+photos.length)%photos.length].img]
+      .forEach(src => { const img = new Image(); img.src = src; });
+  }, [slide, photos]);
 
   return (
-    <div className="home-slider"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+    <div
+      className="home-slider"
+      onMouseEnter={handlePause}
+      onMouseLeave={handleResume}
+      role="region"
+      aria-label="Diaporama immersion Brésil"
     >
-      <img className="home-slider-img" src={photos[slide].img} alt={photos[slide].cap} style={{objectFit:"cover",objectPosition:"center 20%"}} loading="lazy"/>
+      {/* Fond flouté dynamique — suit la photo courante */}
+      <div className="home-slider-bg" style={{backgroundImage:`url(${photos[slide].img})`}}/>
+      <div className="home-slider-track">
+        {photos.map((p, i) => (
+          <img
+            key={i}
+            className={"home-slider-img" + (i === slide ? " active" : "")}
+            src={p.img}
+            alt={p.cap + " — " + p.sub}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            style={{zIndex:1}}
+          />
+        ))}
+      </div>
       <div className="home-slider-overlay"/>
       <div className="home-slider-info">
         <div className="home-slider-cap">{photos[slide].cap}</div>
         <div className="home-slider-sub">{photos[slide].sub}</div>
       </div>
-      <button className="home-slider-prev" onClick={() => setSlide(i => (i-1+photos.length)%photos.length)} aria-label="Précédent">‹</button>
-      <button className="home-slider-next" onClick={() => setSlide(i => (i+1)%photos.length)} aria-label="Suivant">›</button>
+      <button className="home-slider-prev" onClick={() => goTo(s => (s-1+photos.length)%photos.length)} aria-label="Photo précédente">‹</button>
+      <button className="home-slider-next" onClick={() => goTo(s => (s+1)%photos.length)} aria-label="Photo suivante">›</button>
       <div className="home-slider-counter">{slide+1} / {photos.length}</div>
+      {paused && <div className="home-slider-pause">⏸ Pause</div>}
       <div className="home-slider-dots">
         {photos.map((_,i) => (
-          <button key={i} className={"home-slider-dot"+(i===slide?" active":"")} onClick={() => setSlide(i)} aria-label={"Photo "+(i+1)}/>
+          <button key={i} className={"home-slider-dot"+(i===slide?" active":"")} onClick={() => goTo(i)} aria-label={"Photo "+(i+1)}/>
         ))}
       </div>
+      <div className="home-slider-progress" style={{width:`${progress}%`}}/>
     </div>
   );
 }
 
 /* ── Galerie avec diaporama ── */
+const GALLERY_DURATION = 4000;
 function GalleryWithLightbox({ photos }) {
-  const [active, setActive] = useState(null);
-  const [slide, setSlide] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [active,  setActive]  = useState(null);
+  const [slide,   setSlide]   = useState(0);
+  const [paused,  setPaused]  = useState(false);
+  const [progress, setProgress] = useState(0);
+  const timerRef  = React.useRef(null);
+  const rafRef    = React.useRef(null);
+  const startTs   = React.useRef(null);
+  const elapsedMs = React.useRef(0);
 
-  // Autoplay — avance toutes les 3 secondes
+  const goTo = idx => {
+    const next = typeof idx === "function" ? idx(slide) : idx;
+    setSlide(next);
+    setProgress(0);
+    elapsedMs.current = 0;
+  };
+
+  /* rAF pour la barre de progression */
   useEffect(() => {
+    cancelAnimationFrame(rafRef.current);
     if (paused || active !== null) return;
-    const t = setInterval(() => setSlide(i => (i + 1) % photos.length), 3000);
-    return () => clearInterval(t);
-  }, [paused, active, photos.length]);
+    startTs.current = performance.now();
+    const tick = () => {
+      const spent = elapsedMs.current + (performance.now() - startTs.current);
+      setProgress(Math.min((spent / GALLERY_DURATION) * 100, 100));
+      rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [paused, active, slide]);
 
-  // Keyboard navigation
+  /* avance automatique */
+  useEffect(() => {
+    clearTimeout(timerRef.current);
+    if (paused || active !== null) return;
+    const remaining = GALLERY_DURATION - elapsedMs.current;
+    timerRef.current = setTimeout(() => {
+      setSlide(s => (s + 1) % photos.length);
+      setProgress(0);
+      elapsedMs.current = 0;
+    }, Math.max(remaining, 200));
+    return () => clearTimeout(timerRef.current);
+  }, [paused, active, slide, photos.length]);
+
+  const handlePause  = () => { elapsedMs.current += performance.now() - (startTs.current||performance.now()); setPaused(true); };
+  const handleResume = () => { startTs.current = performance.now(); setPaused(false); };
+
+  /* navigation clavier en lightbox */
   useEffect(() => {
     if (active === null) return;
     const fn = e => {
-      if (e.key === "Escape") setActive(null);
-      if (e.key === "ArrowRight") setActive(i => (i + 1) % photos.length);
-      if (e.key === "ArrowLeft") setActive(i => (i - 1 + photos.length) % photos.length);
+      if (e.key === "Escape")      setActive(null);
+      if (e.key === "ArrowRight")  setActive(i => (i + 1) % photos.length);
+      if (e.key === "ArrowLeft")   setActive(i => (i - 1 + photos.length) % photos.length);
     };
     window.addEventListener("keydown", fn);
     return () => window.removeEventListener("keydown", fn);
   }, [active, photos.length]);
 
+  /* préchargement */
+  useEffect(() => {
+    [photos[(slide+1)%photos.length].img, photos[(slide-1+photos.length)%photos.length].img]
+      .forEach(src => { const img = new Image(); img.src = src; });
+  }, [slide, photos]);
+
   return (
     <>
-      {/* ── CAROUSEL AUTOMATIQUE ── */}
+      {/* ── CAROUSEL PRINCIPAL (4:3) ── */}
       <div
-        style={{position:"relative",overflow:"hidden",borderRadius:8,marginBottom:12,cursor:"pointer",background:"#000"}}
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+        style={{
+          position:"relative", overflow:"hidden",
+          aspectRatio:"4/3",
+          marginBottom:10, cursor:"pointer",
+          background:"#000", border:"1px solid var(--border)"
+        }}
+        onMouseEnter={handlePause}
+        onMouseLeave={handleResume}
         onClick={() => setActive(slide)}
+        role="region"
+        aria-label="Diaporama galerie"
       >
-        <img
-          src={photos[slide].img}
-          alt={photos[slide].cap}
-          style={{width:"100%",height:280,objectFit:"cover",display:"block",transition:"opacity .4s"}}
-        />
-        <div style={{position:"absolute",bottom:0,left:0,right:0,padding:"12px 16px",background:"linear-gradient(transparent,rgba(0,0,0,.85))"}}>
-          <div style={{fontFamily:"var(--fd)",fontSize:16,color:"#fff"}}>{photos[slide].cap}</div>
+        {/* Stack d'images crossfade */}
+        {photos.map((p, i) => (
+          <img
+            key={i}
+            src={p.img}
+            alt={p.cap + " — " + p.sub}
+            loading={i === 0 ? "eager" : "lazy"}
+            decoding="async"
+            style={{
+              position:"absolute", inset:0,
+              width:"100%", height:"100%",
+              objectFit:"contain",
+              display:"block",
+              opacity: i === slide ? 1 : 0,
+              transition:"opacity .6s ease",
+              willChange:"opacity",
+              WebkitBackfaceVisibility:"hidden",
+            }}
+          />
+        ))}
+        {/* gradient + légende */}
+        <div style={{position:"absolute",inset:0,background:"linear-gradient(to right,rgba(0,0,0,.6) 0%,transparent 55%)",pointerEvents:"none",zIndex:1}}/>
+        <div style={{position:"absolute",bottom:0,left:0,right:0,padding:"14px 18px",background:"linear-gradient(transparent,rgba(0,0,0,.8))",zIndex:2}}>
+          <div style={{fontFamily:"var(--fd)",fontSize:18,color:"#fff",textShadow:"0 2px 6px rgba(0,0,0,.6)"}}>{photos[slide].cap}</div>
           <div style={{fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",color:"rgba(255,255,255,.6)",marginTop:3}}>{photos[slide].sub}</div>
         </div>
-        {/* Boutons nav */}
-        <button onClick={e=>{e.stopPropagation();setSlide(i=>(i-1+photos.length)%photos.length);}} style={{position:"absolute",left:10,top:"50%",transform:"translateY(-50%)",background:"rgba(0,0,0,.5)",border:"1px solid rgba(255,255,255,.2)",color:"#fff",width:36,height:36,fontSize:18,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}} aria-label="Précédent">‹</button>
-        <button onClick={e=>{e.stopPropagation();setSlide(i=>(i+1)%photos.length);}} style={{position:"absolute",right:10,top:"50%",transform:"translateY(-50%)",background:"rgba(0,0,0,.5)",border:"1px solid rgba(255,255,255,.2)",color:"#fff",width:36,height:36,fontSize:18,cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center"}} aria-label="Suivant">›</button>
-        {/* Pause indicator */}
-        {paused && <div style={{position:"absolute",top:10,right:10,background:"rgba(192,57,43,.8)",padding:"3px 8px",fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",color:"#fff"}}>EN PAUSE</div>}
-        {/* Compteur */}
-        <div style={{position:"absolute",top:10,left:10,background:"rgba(0,0,0,.6)",padding:"3px 8px",fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"1.5px",color:"rgba(255,255,255,.8)"}}>{slide+1} / {photos.length}</div>
+        {/* nav gauche / droite */}
+        {[["prev",10,"‹",e=>{e.stopPropagation();goTo(s=>(s-1+photos.length)%photos.length);}],
+          ["next","auto","›",e=>{e.stopPropagation();goTo(s=>(s+1)%photos.length);}]
+        ].map(([k,l,ch,fn]) => (
+          <button key={k} onClick={fn}
+            style={{position:"absolute",[k==="prev"?"left":"right"]:10,top:"50%",transform:"translateY(-50%)",
+              background:"rgba(0,0,0,.55)",border:"1px solid rgba(255,255,255,.25)",
+              color:"#fff",width:40,height:40,fontSize:20,cursor:"pointer",
+              display:"flex",alignItems:"center",justifyContent:"center",
+              transition:"background .2s",zIndex:3}}
+            aria-label={k==="prev"?"Photo précédente":"Photo suivante"}
+            onMouseEnter={e=>e.currentTarget.style.background="var(--red)"}
+            onMouseLeave={e=>e.currentTarget.style.background="rgba(0,0,0,.55)"}
+          >{ch}</button>
+        ))}
+        {/* compteur */}
+        <div style={{position:"absolute",top:10,right:10,background:"rgba(0,0,0,.55)",padding:"3px 8px",fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"1.5px",color:"rgba(255,255,255,.8)",zIndex:3}}>{slide+1} / {photos.length}</div>
+        {paused && <div style={{position:"absolute",top:10,left:10,background:"rgba(192,57,43,.85)",padding:"3px 10px",fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"2px",textTransform:"uppercase",color:"#fff",zIndex:3}}>⏸ Pause</div>}
+        {/* barre progression */}
+        <div style={{position:"absolute",bottom:0,left:0,height:2,background:"var(--red)",width:`${progress}%`,transition:"width 80ms linear",zIndex:4}}/>
       </div>
+
       {/* Points de navigation */}
-      <div style={{display:"flex",gap:5,justifyContent:"center",marginBottom:16,flexWrap:"wrap"}}>
+      <div style={{display:"flex",gap:5,justifyContent:"center",marginBottom:14,flexWrap:"wrap"}}>
         {photos.map((_,i) => (
-          <button key={i} onClick={()=>setSlide(i)} style={{width:i===slide?18:6,height:6,borderRadius:i===slide?3:50,background:i===slide?"var(--red)":"rgba(255,255,255,.2)",border:"none",cursor:"pointer",transition:"all .3s",padding:0}} aria-label={"Photo "+(i+1)}/>
+          <button key={i} onClick={()=>goTo(i)}
+            style={{width:i===slide?20:6,height:6,borderRadius:i===slide?3:50,
+              background:i===slide?"var(--red)":"rgba(255,255,255,.2)",
+              border:"none",cursor:"pointer",transition:"all .3s",padding:0}}
+            aria-label={"Photo "+(i+1)}/>
         ))}
       </div>
 
       {/* ── GRILLE MINIATURES ── */}
       <div className="gallery-grid">
         {photos.map((item, i) => (
-          <div key={i} className="gallery-item" onClick={() => { setSlide(i); setActive(i); }} style={{cursor:"pointer",outline:i===slide?"2px solid var(--red)":"none",outlineOffset:2}}>
-            <img src={item.img} alt={item.cap + " - Karim Sadat SK TEAM JJB Brésil"} loading="lazy"/>
+          <div key={i} className="gallery-item"
+            onClick={() => { goTo(i); setActive(i); }}
+            style={{cursor:"pointer",outline:i===slide?"2px solid var(--red)":"none",outlineOffset:2}}>
+            <img
+              src={item.img}
+              alt={item.cap + " — Karim Sadat SK TEAM JJB Brésil"}
+              loading="lazy"
+              decoding="async"
+              style={{objectFit:"contain"}}
+            />
             <div className="gallery-cap">
               <div className="gallery-cap-name">{item.cap}</div>
               <div className="gallery-cap-sub">{item.sub}</div>
@@ -686,24 +891,27 @@ function GalleryWithLightbox({ photos }) {
         ))}
       </div>
 
+      {/* ── LIGHTBOX ── */}
       {active !== null && (
         <div className="lightbox" onClick={() => setActive(null)}>
           <button className="lightbox-close" onClick={() => setActive(null)} aria-label="Fermer">×</button>
-          <button className="lightbox-prev" onClick={e => { e.stopPropagation(); setActive(i => (i - 1 + photos.length) % photos.length); }} aria-label="Précédent">‹</button>
+          <button className="lightbox-prev" onClick={e => { e.stopPropagation(); setActive(i => (i-1+photos.length)%photos.length); }} aria-label="Précédent">‹</button>
           <img
             className="lightbox-img"
             src={photos[active].img}
             alt={photos[active].cap}
             onClick={e => e.stopPropagation()}
+            decoding="async"
+            style={{imageRendering:"auto"}}
           />
-          <button className="lightbox-next" onClick={e => { e.stopPropagation(); setActive(i => (i + 1) % photos.length); }} aria-label="Suivant">›</button>
+          <button className="lightbox-next" onClick={e => { e.stopPropagation(); setActive(i => (i+1)%photos.length); }} aria-label="Suivant">›</button>
           <div className="lightbox-cap">{photos[active].cap} — {photos[active].sub}</div>
           <div className="lightbox-dots">
-            {photos.map((_, i) => (
-              <button key={i} className={"lightbox-dot" + (i === active ? " active" : "")} onClick={e => { e.stopPropagation(); setActive(i); }} aria-label={"Photo " + (i+1)}/>
+            {photos.map((_,i) => (
+              <button key={i} className={"lightbox-dot"+(i===active?" active":"")} onClick={e=>{e.stopPropagation();setActive(i);}} aria-label={"Photo "+(i+1)}/>
             ))}
           </div>
-          <div className="lightbox-counter">{active + 1} / {photos.length}</div>
+          <div className="lightbox-counter">{active+1} / {photos.length}</div>
         </div>
       )}
     </>
