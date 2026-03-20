@@ -54,13 +54,13 @@ import gallery41 from "./assets/gallery_41.jpg";
 
 // Images pré-composées 1920×1440 — photo nette centrée sur fond flouté sombre
 const GALLERY_PHOTOS = [
-  { img: gallery00, cap: "Nicolas Renier", sub: "Fondateur NRFight — Pionnier Luta Livre" },
-  { img: gallery01, cap: "Séminaire respiration & mental", sub: "Marcio Faraco — Préparateur mental Mika Galvão" },
-  { img: gallery02, cap: "Cours Grappling — No-Gi", sub: "BJJ College by Melqui Galvão" },
-  { img: gallery03, cap: "Kaua Gabriel", sub: "BJJ College — São Paulo" },
-  { img: gallery04, cap: "Tarcisio Felipetto", sub: "BJJ College — São Paulo" },
-  { img: gallery05, cap: "Sami Galvão", sub: "Physiothérapeute de l'équipe — Ceinture Noire" },
-  { img: gallery06, cap: "Tiago Lima", sub: "BJJ College — São Paulo" },
+  { img: gallery00, cap: "Séminaire respiration & mental", sub: "Marcio Faraco — Préparateur mental Mika Galvão" },
+  { img: gallery01, cap: "Cours Grappling — No-Gi", sub: "BJJ College — São Paulo" },
+  { img: gallery02, cap: "Kaua Gabriel", sub: "BJJ College — São Paulo" },
+  { img: gallery03, cap: "Tarcisio Felipetto", sub: "BJJ College — São Paulo" },
+  { img: gallery04, cap: "Sami Galvão", sub: "Physiothérapeute de l'équipe — Ceinture Noire" },
+  { img: gallery05, cap: "Tiago Lima", sub: "BJJ College — São Paulo" },
+  { img: gallery06, cap: "Pédro Henrique Rangel", sub: "BJJ College — São Paulo" },
   { img: gallery07, cap: "Pédro Henrique Rangel", sub: "BJJ College — São Paulo" },
   { img: gallery08, cap: "Joao Miyao", sub: "Stage Z-TEAM — Boulogne-Billancourt" },
   { img: gallery09, cap: "Marcio Faraco", sub: "Préparateur mental — BJJ College" },
