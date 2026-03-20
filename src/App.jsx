@@ -34,22 +34,22 @@ import gallery22 from "./assets/gallery_22.jpg";
 import gallery23 from "./assets/gallery_23.jpg";
 import gallery24 from "./assets/gallery_24.jpg";
 import gallery25 from "./assets/gallery_25.jpg";
-import gallery26 from "./assets/gallery_26.jpg";
-import gallery27 from "./assets/gallery_27.jpg";
-import gallery28 from "./assets/gallery_28.jpg";
-import gallery29 from "./assets/gallery_29.jpg";
-import gallery30 from "./assets/gallery_30.jpg";
-import gallery31 from "./assets/gallery_31.jpg";
-import gallery32 from "./assets/gallery_32.jpg";
-import gallery33 from "./assets/gallery_33.jpg";
-import gallery34 from "./assets/gallery_34.jpg";
-import gallery35 from "./assets/gallery_35.jpg";
-import gallery36 from "./assets/gallery_36.jpg";
-import gallery37 from "./assets/gallery_37.jpg";
-import gallery38 from "./assets/gallery_38.jpg";
-import gallery39 from "./assets/gallery_39.jpg";
-import gallery40 from "./assets/gallery_40.jpg";
-import gallery41 from "./assets/gallery_41.jpg";
+// import gallery26 from "./assets/gallery_26.jpg";
+// import gallery27 from "./assets/gallery_27.jpg";
+// import gallery28 from "./assets/gallery_28.jpg";
+// import gallery29 from "./assets/gallery_29.jpg";
+// import gallery30 from "./assets/gallery_30.jpg";
+// import gallery31 from "./assets/gallery_31.jpg";
+// import gallery32 from "./assets/gallery_32.jpg";
+// import gallery33 from "./assets/gallery_33.jpg";
+// import gallery34 from "./assets/gallery_34.jpg";
+// import gallery35 from "./assets/gallery_35.jpg";
+// import gallery36 from "./assets/gallery_36.jpg";
+// import gallery37 from "./assets/gallery_37.jpg";
+// import gallery38 from "./assets/gallery_38.jpg";
+// import gallery39 from "./assets/gallery_39.jpg";
+// import gallery40 from "./assets/gallery_40.jpg";
+// import gallery41 from "./assets/gallery_41.jpg";
 
 // Images pré-composées 1920×1440 — photo nette centrée sur fond flouté sombre
 const GALLERY_PHOTOS = [
@@ -79,22 +79,22 @@ const GALLERY_PHOTOS = [
   { img: gallery23, cap: "Ceintures noires — Gi",   sub: "BJJ College by Melqui Galvão" },
   { img: gallery24, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
   { img: gallery25, cap: "Entraînement Gi",          sub: "BJJ College — São Paulo" },
-  { img: gallery26, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery27, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery28, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery29, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery30, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery31, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery32, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery33, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery34, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery35, cap: "Entraînement No-Gi",       sub: "BJJ College — São Paulo" },
-  { img: gallery36, cap: "Entraînement No-Gi",       sub: "BJJ College — São Paulo" },
-  { img: gallery37, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery38, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery39, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery40, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery41, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery26, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery27, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery28, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery29, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery30, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery31, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery32, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery33, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery34, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery35, cap: "Entraînement No-Gi",       sub: "BJJ College — São Paulo" },
+  // { img: gallery36, cap: "Entraînement No-Gi",       sub: "BJJ College — São Paulo" },
+  // { img: gallery37, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery38, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery39, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery40, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
+  // { img: gallery41, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
 ];
 
 const IMG = {
