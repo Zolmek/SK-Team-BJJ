@@ -623,6 +623,51 @@ footer { background:#000; color:#fff; padding:60px 0 32px; border-top:1px solid 
 .comp-phase-sub { font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--red); }
 .comp-phase-body { padding:18px; border-top:1px solid var(--border); background:#0f0f0f; }
 @media(max-width:600px){ .pp-week{grid-template-columns:1fr;} .pp-tabs{flex-wrap:wrap;} }
+
+/* ── BOUTON WHATSAPP FLOTTANT ── */
+.wa-wrap { position:fixed; bottom:28px; right:28px; z-index:999; display:flex; align-items:center; }
+.wa-btn {
+  width:58px; height:58px; border-radius:50%;
+  background:linear-gradient(135deg,#25D366,#128C7E);
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,.5);
+  transition:transform .25s, box-shadow .25s;
+  text-decoration:none; flex-shrink:0;
+}
+.wa-btn:hover { transform:scale(1.1); box-shadow:0 6px 28px rgba(37,211,102,.65); }
+.wa-btn svg { width:30px; height:30px; fill:#fff; }
+.wa-tooltip {
+  background:var(--dark2); border:1px solid var(--border);
+  padding:8px 14px; font-family:var(--fc); font-size:11px;
+  font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  color:var(--white); white-space:nowrap; opacity:0;
+  transition:opacity .2s; pointer-events:none; margin-right:12px;
+}
+.wa-wrap:hover .wa-tooltip { opacity:1; }
+/* ── MENU PLUS DROPDOWN ── */
+.nav-more-wrap { position:relative; display:inline-block; }
+.nav-more-dropdown {
+  position:absolute; top:calc(100% + 8px); right:0;
+  background:rgba(10,10,10,.98); border:1px solid var(--border);
+  backdrop-filter:blur(20px); min-width:180px; padding:6px 0;
+  z-index:901; border-radius:4px; box-shadow:0 8px 32px rgba(0,0,0,.6);
+  opacity:0; visibility:hidden; transform:translateY(-4px);
+  transition:opacity .2s, transform .2s, visibility .2s;
+}
+.nav-more-wrap:hover .nav-more-dropdown,
+.nav-more-wrap.open .nav-more-dropdown { opacity:1; visibility:visible; transform:translateY(0); }
+.nav-more-item {
+  display:block; width:100%; background:none; border:none; cursor:pointer;
+  font-family:var(--fc); font-size:11px; font-weight:700;
+  letter-spacing:2px; text-transform:uppercase;
+  color:rgba(255,255,255,.6); padding:11px 18px; text-align:left; transition:all .15s;
+}
+.nav-more-item:hover, .nav-more-item.active { color:var(--white); background:rgba(255,255,255,.07); }
+/* ── ÉTOILES ── */
+.testi-stars { color:#F5A623; font-size:14px; letter-spacing:2px; margin-bottom:8px; }
+.testi-avatar { width:36px; height:36px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; font-family:var(--fd); font-size:16px; color:#fff; flex-shrink:0; margin-right:12px; }
+.testi-header { display:flex; align-items:center; margin-top:12px; }
+
 button, a { min-height:44px; }
 .nav-links a, .nav-btn { min-height:unset; }
 img { max-width:100%; }
