@@ -119,7 +119,7 @@ const IMG = {
    Tous les onglets = modales plein écran
 ══════════════════════════════════════════ */
 const CSS = `
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&display=swap');
+/* Fonts chargées via <link> async dans index.html pour meilleures performances */
 
 :root {
   --black: #0A0A0A;
@@ -667,6 +667,27 @@ footer { background:#000; color:#fff; padding:60px 0 32px; border-top:1px solid 
 .testi-stars { color:#F5A623; font-size:14px; letter-spacing:2px; margin-bottom:8px; }
 .testi-avatar { width:36px; height:36px; border-radius:50%; background:var(--red); display:flex; align-items:center; justify-content:center; font-family:var(--fd); font-size:16px; color:#fff; flex-shrink:0; margin-right:12px; }
 .testi-header { display:flex; align-items:center; margin-top:12px; }
+
+
+.hero-tagline { font-family:var(--fd); font-size:clamp(36px,5vw,72px); color:var(--red); letter-spacing:2px; line-height:.9; margin-bottom:20px; }
+.hero-urgence { display:flex; align-items:center; gap:10px; margin-bottom:32px; font-family:var(--fc); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.7); }
+.hero-urgence-dot { width:8px; height:8px; border-radius:50%; background:#25D366; box-shadow:0 0 0 3px rgba(37,211,102,.25); animation:pulse 2s infinite; flex-shrink:0; }
+@keyframes pulse { 0%,100%{box-shadow:0 0 0 3px rgba(37,211,102,.25);} 50%{box-shadow:0 0 0 6px rgba(37,211,102,.1);} }
+
+/* ── SECTION INSCRIPTION RAPIDE ── */
+.inscription-strip { background:var(--red); padding:48px 0; }
+.inscription-inner { max-width:1240px; margin:0 auto; padding:0 32px; display:flex; align-items:center; gap:48px; }
+.inscription-text h2 { font-family:var(--fd); font-size:clamp(32px,4vw,52px); color:#fff; letter-spacing:1px; line-height:.9; margin-bottom:8px; }
+.inscription-text p { font-size:13px; color:rgba(255,255,255,.75); line-height:1.6; }
+.inscription-form { display:flex; gap:10px; flex-wrap:wrap; flex:1; min-width:300px; }
+.inscription-input { background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); color:#fff; padding:14px 16px; font-size:14px; font-family:var(--fb); flex:1; min-width:140px; transition:border-color .2s; }
+.inscription-input::placeholder { color:rgba(255,255,255,.6); }
+.inscription-input:focus { outline:none; border-color:#fff; background:rgba(255,255,255,.2); }
+.inscription-btn { background:#fff; color:var(--red); border:none; cursor:pointer; padding:14px 28px; font-family:var(--fc); font-size:12px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; transition:all .2s; white-space:nowrap; }
+.inscription-btn:hover { background:var(--dark); color:#fff; }
+.inscription-success { display:flex; align-items:center; gap:12px; padding:16px 20px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3); color:#fff; font-family:var(--fc); font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; }
+@media(max-width:900px){ .inscription-inner{flex-direction:column;gap:28px;} .inscription-text{text-align:center;} }
+@media(max-width:600px){ .inscription-form{flex-direction:column;} .inscription-input,.inscription-btn{width:100%;} }
 
 button, a { min-height:44px; }
 .nav-links a, .nav-btn { min-height:unset; }
@@ -1519,6 +1540,53 @@ function ModalContact({ open, onClose }) {
 }
 
 
+
+/* ══════════════════════════════════════
+   COMPOSANT INSCRIPTION RAPIDE
+══════════════════════════════════════ */
+function InscriptionStrip() {
+  const [nom, setNom] = useState("");
+  const [tel, setTel] = useState("");
+  const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+
+  const handleSubmit = async () => {
+    if (!nom.trim() || !tel.trim()) return;
+    setSending(true);
+    try {
+      // Ouvre WhatsApp avec les infos pré-remplies
+      const msg = encodeURIComponent(`Bonjour SK TEAM JJB ! Je souhaite réserver mon essai gratuit.%0ANom : ${nom}%0ATél : ${tel}`);
+      window.open(`https://wa.me/33650054954?text=${msg}`, '_blank');
+      setSent(true);
+    } catch(e) {}
+    setSending(false);
+  };
+
+  return (
+    <div className="inscription-strip">
+      <div className="inscription-inner">
+        <div className="inscription-text">
+          <h2>1ER COURS<br/>GRATUIT</h2>
+          <p>Sans engagement · Clamart (92140)<br/>Adultes, Ados, Kids — tous niveaux</p>
+        </div>
+        {sent ? (
+          <div className="inscription-success">
+            ✓ Message envoyé — on vous recontacte rapidement !
+          </div>
+        ) : (
+          <div className="inscription-form">
+            <input className="inscription-input" placeholder="Votre prénom" value={nom} onChange={e => setNom(e.target.value)}/>
+            <input className="inscription-input" placeholder="Votre téléphone" value={tel} onChange={e => setTel(e.target.value)} type="tel"/>
+            <button className="inscription-btn" onClick={handleSubmit} disabled={sending}>
+              {sending ? "Envoi..." : "Je réserve →"}
+            </button>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /* ══════════════════════════════════════
    MODALE RÈGLEMENT DU CLUB
 ══════════════════════════════════════ */
@@ -2005,13 +2073,19 @@ export default function App() {
             {t:"“J’ai commencé à zéro. En 6 mois j’ai progressé plus vite qu’en 2 ans dans ma salle précédente.”", n:"Sébastien M.", d:"Débutant · Saison 2025"},
           ].map(item => (
             <div key={item.n} className="testi-item">
+              <div className="testi-stars">★★★★★</div>
               <div className="testi-text">{item.t}</div>
-              <div className="testi-name">{item.n}</div>
-              <div className="testi-detail">{item.d}</div>
+              <div className="testi-header">
+                <div className="testi-avatar">{item.n[0]}</div>
+                <div><div className="testi-name">{item.n}</div><div className="testi-detail">{item.d}</div></div>
+              </div>
             </div>
           ))}
         </div>
       </div>
+
+      {/* SECTION INSCRIPTION RAPIDE */}
+      <InscriptionStrip />
 
       {/* CARDS GRID */}
       <section className="home-section">
@@ -2083,7 +2157,7 @@ export default function App() {
 
       {/* BOUTON WHATSAPP FLOTTANT */}
       <div className="wa-wrap">
-        <a className="wa-btn" href="https://wa.me/33600000000?text=Bonjour%2C%20je%20souhaite%20m%27inscrire%20%C3%A0%20SK%20TEAM%20JJB%20%E2%80%94%20essai%20gratuit" target="_blank" rel="noopener noreferrer" aria-label="Contacter SK TEAM JJB sur WhatsApp">
+        <a className="wa-btn" href="https://wa.me/33650054954?text=Bonjour%2C%20je%20souhaite%20m%27inscrire%20%C3%A0%20SK%20TEAM%20JJB%20%E2%80%94%20essai%20gratuit" target="_blank" rel="noopener noreferrer" aria-label="Contacter SK TEAM JJB sur WhatsApp">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         </a>
         <div className="wa-tooltip">WhatsApp</div>
