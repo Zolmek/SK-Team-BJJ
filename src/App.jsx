@@ -1105,7 +1105,7 @@ function ModalKids({ open, onClose, openContact }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-panel" onClick={e => e.stopPropagation()}>
         <div className="modal-close">
-          <span className="modal-close-title">KIDS & ADOS</span>
+          <span className="modal-close-title">PROGRAMME KIDS & ADOS</span>
           <button className="modal-close-btn" onClick={onClose} aria-label="Fermer">&times;</button>
         </div>
         <div className="modal-body">
@@ -1168,7 +1168,6 @@ function ModalKids({ open, onClose, openContact }) {
             <ul className="m-list">
               <li>Cours encadrés par Karim Sadat, Ceinture Noire 1er Dan IBJJF</li>
               <li>Groupes homogènes par tranches d’âge</li>
-              <li>Tenue : kimono (gi) fourni pour le 1er cours</li>
               <li>Licence FFJDA / CFJJB obligatoire (assurance incluse)</li>
               <li>Tarifs spéciaux famille disponibles</li>
               <li>1er cours d’essai gratuit</li>
@@ -1297,16 +1296,16 @@ function ModalProgramme({ open, onClose }) {
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-panel" onClick={e => e.stopPropagation()}>
         <div className="modal-close">
-          <span className="modal-close-title">PROGRAMME</span>
+          <span className="modal-close-title">PROGRAMME ADULTES</span>
           <button className="modal-close-btn" onClick={onClose} aria-label="Fermer">&times;</button>
         </div>
         <div className="modal-body">
           <div className="m-tag">Structure pédagogique</div>
-          <h2 className="m-h2">SK TEAM<br/>FOUNDATIONAL</h2>
+          <h2 className="m-h2">SK TEAM<br/>FONDAMENTAUX</h2>
           <div className="m-divider"/>
           <p className="m-text">Saison complète d’octobre à juin — 34 semaines, 2 séances par semaine. Structuré en 3 mésocycles progressifs selon le programme SK TEAM BJJ, adapté aux adultes débutants en séances d’une heure.</p>
           <div className="m-grid2">
-            {[{v:"Adultes 15+",l:"Public cible"},{v:"~12 max",l:"Effectif par séance"},{v:"1h00",l:"Durée séance"},{v:"2/semaine",l:"Fréquence"},{v:"34 séances",l:"Par saison"},{v:"Attestation",l:"Fin de saison"}].map(c => (
+            {[{v:"Ados · Adultes · Masters",l:"Public cible"},{v:"1h00",l:"Durée séance"},{v:"2/semaine",l:"Fréquence"},{v:"34 séances",l:"Par saison"},{v:"Attestation",l:"Fin de saison"}].map(c => (
               <div key={c.v} className="m-cell"><div className="m-cell-val">{c.v}</div><div className="m-cell-lbl">{c.l}</div></div>
             ))}
           </div>
@@ -1466,6 +1465,102 @@ function ModalContact({ open, onClose }) {
                 @skteamjjb
               </a>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+/* ══════════════════════════════════════
+   MODALE RÈGLEMENT DU CLUB
+══════════════════════════════════════ */
+function ModalReglement({ open, onClose }) {
+  if (!open) return null;
+  const sections = [
+    {
+      icon:"🧼", title:"Hygiène",
+      items:[
+        "Kimono propre et lavé obligatoire à chaque séance",
+        "Ongles courts, mains et pieds propres avant d'entrer sur le tatami",
+        "Cheveux longs attachés — bijoux interdits sur le tatami",
+        "Tenue No-Gi propre obligatoire pour les cours sans kimono",
+        "En cas de blessure ouverte, la plaie doit être couverte avant de pratiquer",
+      ]
+    },
+    {
+      icon:"🥋", title:"Tenues obligatoires",
+      items:[
+        "Gi (kimono) blanc, bleu ou noir — patch SK TEAM souhaité",
+        "No-Gi : rash guard + shorts de grappling (sans poches ni fermetures éclair)",
+        "Pieds nus sur le tatami uniquement — tongs obligatoires en dehors",
+        "Aucune tenue de ville, jean ou vêtement avec boutons sur le tatami",
+      ]
+    },
+    {
+      icon:"🤝", title:"Respect & Comportement",
+      items:[
+        "Salut obligatoire au début et à la fin de chaque cours et de chaque sparring",
+        "Respect du coach, des partenaires, des grades et du matériel",
+        "Langage et comportement appropriés — tolérance zéro pour tout irrespect",
+        "Le tap (abandon) est sacré — il est respecté immédiatement et sans exception",
+        "L'ego est laissé au vestiaire — le tatami est un espace d'apprentissage",
+      ]
+    },
+    {
+      icon:"📅", title:"Assiduité & Ponctualité",
+      items:[
+        "Présence régulière fortement encouragée — la progression dépend de l'assiduité",
+        "Arriver 5 minutes avant le début. Retard > 10 min = accès refusé au tatami",
+        "En cas d'absence prévue, prévenir le coach au préalable",
+        "Absences injustifiées répétées peuvent entraîner la résiliation de la licence",
+        "Pas de pratique en cas de maladie contagieuse — santé de tous en priorité",
+      ]
+    },
+    {
+      icon:"📵", title:"Téléphone & Vestiaires",
+      items:[
+        "Téléphone interdit sur le tatami pendant les cours",
+        "Les affaires personnelles restent dans les vestiaires — SK TEAM JJB décline toute responsabilité en cas de perte ou vol",
+        "Les parents et accompagnateurs restent dans la zone dédiée — pas d'intervention pendant les séances",
+        "Tout matériel prêté par le club doit être restitué propre et en bon état",
+      ]
+    },
+    {
+      icon:"⚠️", title:"Sécurité & Sanctions",
+      items:[
+        "Toute technique dangereuse délibérée est immédiatement sanctionnée",
+        "Les sparrings se font avec contrôle — l'intensité est adaptée au niveau du partenaire",
+        "Tout comportement irrespectueux répété peut entraîner l'exclusion définitive du club",
+        "Le coach a l'autorité finale sur toutes les décisions prises sur le tatami",
+      ]
+    },
+  ];
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-panel" onClick={e => e.stopPropagation()}>
+        <div className="modal-close">
+          <span className="modal-close-title">RÈGLEMENT DU CLUB</span>
+          <button className="modal-close-btn" onClick={onClose} aria-label="Fermer">&times;</button>
+        </div>
+        <div className="modal-body">
+          <div className="m-tag">SK TEAM JJB — Clamart</div>
+          <h2 className="m-h2">RÈGLEMENT<br/>DU CLUB</h2>
+          <div className="m-divider"/>
+          <p className="m-text">Le règlement s'applique à tous les membres du club sans exception — Kids, Ados, Adultes et Masters. Il garantit un environnement sûr, respectueux et propice à la progression de chacun.</p>
+          {sections.map(s => (
+            <div key={s.title} className="m-section">
+              <div className="m-section-title">{s.icon} {s.title}</div>
+              <ul className="m-list">
+                {s.items.map(item => <li key={item}>{item}</li>)}
+              </ul>
+            </div>
+          ))}
+          <div style={{marginTop:28,padding:"16px 20px",background:"rgba(192,57,43,.07)",border:"1px solid rgba(192,57,43,.2)"}}>
+            <p style={{fontFamily:"var(--fc)",fontSize:11,fontWeight:700,letterSpacing:"1.5px",textTransform:"uppercase",color:"var(--red)",marginBottom:6}}>Engagement du membre</p>
+            <p style={{fontSize:13,color:"rgba(255,255,255,.55)",lineHeight:1.75}}>En rejoignant SK TEAM JJB, chaque membre s'engage à respecter ce règlement. La licence annuelle vaut acceptation de l'ensemble des règles du club.</p>
           </div>
         </div>
       </div>
@@ -1747,6 +1842,7 @@ export default function App() {
     {id:"prepphysique", l:"Prépa Physique"},
     {id:"horaires",     l:"Horaires"},
     {id:"club",         l:"Le Club"},
+    {id:"reglement",    l:"Règlement"},
   ];
 
   const open = id => setModal(id);
@@ -1759,9 +1855,10 @@ export default function App() {
     {id:"horaires",n:"04",icon:"M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 6v6l4 2",t:"Horaires & Tarifs",d:"Lundi et Mercredi 19h30–20h30. Tarifs à partir de 150€/an. 1er cours d’essai gratuit."},
     {id:"club",n:"05",icon:"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75",t:"Le Club",d:"Association loi 1901, affiliée FFJDA & CFJJB, fondée à Clamart. Un cadre structuré et bienveillant pour tous les niveaux."},
     {id:"kids",n:"06",icon:"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75",t:"Kids & Ados",d:"BJJ pour les 6–17 ans. 3 groupes par âge : Mini (6-9), Junior (10-14), Ados (15-17). Développement, discipline et confiance en soi."},
-    {id:"competiteur",  n:"08", icon:"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z", t:"Programme Compétiteur", d:"Périodisation sur 3 phases : volume, intensification, affûtage pré-compétition. Pour les pratiquants IBJJF et CFJJB."},
-    {id:"prepphysique", n:"09", icon:"M22 12h-4l-3 9L9 3l-3 9H2",                                                                          t:"Préparation Physique",   d:"4 programmes : Force & Explosivité, Endurance spécifique, Mobilité & Récupération, Circuit tatami. Pour performer et durer."},
-    {id:"contact",      n:"10", icon:"M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z", t:"Essai Gratuit", d:"Premier cours gratuit, sans engagement. Venez découvrir le JJB à Clamart dans une ambiance technique et bienveillante."},
+    {id:"reglement",   n:"08", icon:"M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2 M9 5a2 2 0 002 2h2a2 2 0 002-2 M9 5a2 2 0 012-2h2a2 2 0 012 2 M12 12h.01 M12 16h.01", t:"Règlement", d:"Hygiène, tenues, respect, ponctualité, sécurité. Les règles qui s'appliquent à tous les membres du club."},
+    {id:"competiteur",  n:"09", icon:"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z", t:"Programme Compétiteur", d:"Périodisation sur 3 phases : volume, intensification, affûtage pré-compétition. Pour les pratiquants IBJJF et CFJJB."},
+    {id:"prepphysique", n:"10", icon:"M22 12h-4l-3 9L9 3l-3 9H2",                                                                          t:"Préparation Physique",   d:"4 programmes : Force & Explosivité, Endurance spécifique, Mobilité & Récupération, Circuit tatami. Pour performer et durer."},
+    {id:"contact",      n:"11", icon:"M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z", t:"Essai Gratuit", d:"Premier cours gratuit, sans engagement. Venez découvrir le JJB à Clamart dans une ambiance technique et bienveillante."},
   ];
 
   return (
@@ -1769,6 +1866,7 @@ export default function App() {
       <style>{CSS}</style>
 
       {/* MODALES */}
+      <ModalReglement    open={modal==="reglement"}   onClose={close}/>
       <ModalCompetiteur  open={modal==="competiteur"}  onClose={close}/>
       <ModalPrepPhysique open={modal==="prepphysique"} onClose={close}/>
       <ModalPrive        open={modal==="prive"}        onClose={close}/>
