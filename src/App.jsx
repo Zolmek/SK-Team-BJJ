@@ -570,7 +570,26 @@ footer { background:#000; color:#fff; padding:60px 0 32px; border-top:1px solid 
   color:rgba(255,255,255,.7); white-space:nowrap;
 }
 
-/* ── ACCESSIBILITÉ ── */
+/* ── TABS PRÉPA PHYSIQUE ── */
+.pp-tabs { display:flex; gap:1px; background:var(--border); border:1px solid var(--border); margin-bottom:28px; }
+.pp-tab { flex:1; background:var(--dark2); border:none; cursor:pointer; padding:14px 10px; font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); transition:all .2s; }
+.pp-tab.active { background:rgba(192,57,43,.12); color:var(--red); border-bottom:2px solid var(--red); }
+.pp-tab:hover:not(.active) { background:var(--dark); color:var(--white); }
+.pp-block { display:none; }
+.pp-block.active { display:block; }
+.pp-week { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); margin:16px 0; }
+.pp-day { background:var(--dark2); padding:16px 14px; }
+.pp-day-label { font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--red); margin-bottom:8px; }
+.pp-day-title { font-family:var(--fd); font-size:16px; color:var(--white); margin-bottom:6px; }
+.pp-day-items { list-style:none; }
+.pp-day-items li { font-size:12px; color:rgba(255,255,255,.45); padding:3px 0; display:flex; gap:8px; align-items:center; }
+.pp-day-items li::before { content:""; width:3px; height:3px; background:var(--red); border-radius:50%; flex-shrink:0; }
+.comp-phase { border:1px solid var(--border); margin:10px 0; }
+.comp-phase-header { background:var(--dark2); padding:14px 18px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; }
+.comp-phase-title { font-family:var(--fd); font-size:18px; letter-spacing:.5px; color:var(--white); }
+.comp-phase-sub { font-family:var(--fc); font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--red); }
+.comp-phase-body { padding:18px; border-top:1px solid var(--border); background:#0f0f0f; }
+@media(max-width:600px){ .pp-week{grid-template-columns:1fr;} .pp-tabs{flex-wrap:wrap;} }
 button, a { min-height:44px; }
 .nav-links a, .nav-btn { min-height:unset; }
 img { max-width:100%; }
@@ -692,7 +711,7 @@ function HomeSlider({ photos }) {
       onMouseEnter={handlePause}
       onMouseLeave={handleResume}
       role="region"
-      aria-label="Diaporama immersion Brésil"
+      aria-label="Diaporama immersions Brésil & États-Unis"
     >
       {/* Fond flouté dynamique — suit la photo courante */}
       <div className="home-slider-bg" style={{backgroundImage:`url(${photos[slide].img})`}}/>
@@ -1182,7 +1201,7 @@ function ModalCoach({ open, onClose }) {
           <h2 className="m-h2">KARIM<br/>SADAT</h2>
           <div className="m-divider"/>
           <p className="m-text">Pratiquant de Brazilian Jiu-Jitsu depuis plus de 13 ans, Karim Sadat cumule plus de 2 000 heures d’enseignement. Compétiteur au niveau national et international — Championnats de France, IBJJF European Championships.</p>
-          <p className="m-text">Titulaire du CQP Moniteur Arts Martiaux (spécialité JJB) et arbitre en formation auprès de la FFJDA. Immersion de 3 mois au Brésil au BJJ College by Melqui Galvão.</p>
+          <p className="m-text">Titulaire du CQP Moniteur Arts Martiaux (spécialité JJB) et arbitre en formation auprès de la FFJDA. Immersion au Brésil au BJJ College by Melqui Galvão, et aux États-Unis à New York (Marcelo Garcia Academy, Vitor Ribeiro Shaoling) et en Floride (Roberto Cyborg De Abreu Filho, Robson Moura, Renato Tavares).</p>
           <div className="m-grid2">
             {[{v:"CN 1er Dan",l:"IBJJF / CFJJB"},{v:"CN Grappling",l:"FFL"},{v:"CQP MAM",l:"Moniteur Arts Martiaux"},{v:"AFGSU2",l:"FFJDA"},{v:"2 000+ heures",l:"Enseignement"},{v:"13+ ans",l:"Pratique"}].map(c => (
               <div key={c.v} className="m-cell">
@@ -1192,7 +1211,7 @@ function ModalCoach({ open, onClose }) {
             ))}
           </div>
           <div className="m-section">
-            <div className="m-section-title">Immersion Brésil · BJJ College</div>
+            <div className="m-section-title">Immersions — Brésil & États-Unis</div>
             <div className="immersion-grid">
               <div className="immersion-item">
                 <img src={IMG.melqui} alt="Karim Sadat avec Melqui Galvão" loading="lazy"/>
@@ -1202,6 +1221,30 @@ function ModalCoach({ open, onClose }) {
                 <img src={IMG.mika} alt="Karim Sadat avec Mika Galvão" loading="lazy"/>
                 <div className="immersion-cap"><div className="immersion-name">Mika Galvão</div><div className="immersion-role">Champion du Monde IBJJF</div></div>
               </div>
+            </div>
+            {/* Brésil */}
+            <div style={{marginTop:20}}>
+              <div style={{fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"3px",textTransform:"uppercase",color:"var(--red)",marginBottom:12}}>🇧🇷 Brésil — São Paulo</div>
+              <ul className="m-list">
+                <li><strong style={{color:"var(--white)",fontFamily:"var(--fc)",letterSpacing:"1px"}}>BJJ College by Melqui Galvão</strong><span style={{marginLeft:8,color:"rgba(255,255,255,.4)"}}>São Paulo</span></li>
+              </ul>
+            </div>
+            {/* USA New York */}
+            <div style={{marginTop:20}}>
+              <div style={{fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"3px",textTransform:"uppercase",color:"var(--red)",marginBottom:12}}>🇺🇸 États-Unis — New York</div>
+              <ul className="m-list">
+                <li><strong style={{color:"var(--white)",fontFamily:"var(--fc)",letterSpacing:"1px"}}>Marcelo Garcia Academy</strong><span style={{marginLeft:8,color:"rgba(255,255,255,.4)"}}>New York, NY</span></li>
+                <li><strong style={{color:"var(--white)",fontFamily:"var(--fc)",letterSpacing:"1px"}}>Vitor Ribeiro Shaoling</strong><span style={{marginLeft:8,color:"rgba(255,255,255,.4)"}}>New York, NY</span></li>
+              </ul>
+            </div>
+            {/* USA Floride */}
+            <div style={{marginTop:20}}>
+              <div style={{fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"3px",textTransform:"uppercase",color:"var(--red)",marginBottom:12}}>🇺🇸 États-Unis — Floride</div>
+              <ul className="m-list">
+                <li><strong style={{color:"var(--white)",fontFamily:"var(--fc)",letterSpacing:"1px"}}>Roberto Cyborg De Abreu Filho</strong><span style={{marginLeft:8,color:"rgba(255,255,255,.4)"}}>Floride</span></li>
+                <li><strong style={{color:"var(--white)",fontFamily:"var(--fc)",letterSpacing:"1px"}}>Robson Moura</strong><span style={{marginLeft:8,color:"rgba(255,255,255,.4)"}}>Floride</span></li>
+                <li><strong style={{color:"var(--white)",fontFamily:"var(--fc)",letterSpacing:"1px"}}>Renato Tavares</strong><span style={{marginLeft:8,color:"rgba(255,255,255,.4)"}}>Floride</span></li>
+              </ul>
             </div>
           </div>
           <div className="social-links">
@@ -1398,9 +1441,219 @@ function ModalContact({ open, onClose }) {
   );
 }
 
-/* ══════════════════════════════
+/* ══════════════════════════════════════
+   MODALE COMPÉTITEUR
+══════════════════════════════════════ */
+function ModalCompetiteur({ open, onClose }) {
+  const [phase, setPhase] = useState(null);
+  if (!open) return null;
+
+  const phases = [
+    {
+      id:"p1", label:"Phase 1", title:"Fondamentaux & Volume", period:"Oct → Déc · 12 sem.", color:"rgba(192,57,43,.12)",
+      desc:"Construction des bases techniques et du volume de travail. Priorité au drilling, à la précision et à la gestion du rythme.",
+      seances:[
+        {j:"Lun", t:"Technique", items:["Warmup 10min","Drill position dominante 4×5min","Sparring positionnel 3×6min","Cooldown"]},
+        {j:"Mer", t:"Sparring", items:["Warmup 10min","Flow rolling 2×8min","Sparring intensif 5×5min","Debriefing technique"]},
+        {j:"Sam", t:"Open Mat", items:["Sparring libre 60–90min","Travail des points faibles","Vidéo analyse optionnel"]},
+      ],
+      tags:["Drilling","Positionnement","Garde","Passage de garde","Étranglements de base"],
+    },
+    {
+      id:"p2", label:"Phase 2", title:"Intensification", period:"Jan → Fév · 8 sem.", color:"rgba(192,57,43,.16)",
+      desc:"Montée en intensité progressive. Introduction du sparring compétition avec partenaires de niveau. Travail des chaînes de soumissions.",
+      seances:[
+        {j:"Lun", t:"Technique + Drilling", items:["Warmup 10min","Séquence technique ciblée 3×8min","Sparring thématique 4×6min","Stretching"]},
+        {j:"Mer", t:"Sparring intensif", items:["Warmup 10min","Sparring compétition 6×5min","1min récup entre rounds","Analyse post-sparring"]},
+        {j:"Sam", t:"Compétition simulée", items:["Format compétition IBJJF","3 matchs simulés 7min","Arbitrage officiel","Debriefing vidéo"]},
+      ],
+      tags:["Chaînes de soumissions","Back take","Leg lock entries","Pressure passing","Guillotine"],
+    },
+    {
+      id:"p3", label:"Phase 3", title:"Affûtage Pré-Compétition", period:"J-8 → J-1 · 2 sem.", color:"rgba(192,57,43,.08)",
+      desc:"Réduction progressive du volume, maintien de l'intensité. Préservation du système nerveux et confiance maximale à J-1.",
+      seances:[
+        {j:"J-8 → J-5", t:"Réduction volume", items:["60% du volume habituel","Sparring léger flow","Révision des techniques signature","Récupération active"]},
+        {j:"J-4 → J-2", t:"Maintien intensité", items:["2–3 rounds sparring vif max","Travail mental & visualisation","Nutrition & sommeil priorité","Pas de blessure = objectif 1"]},
+        {j:"J-1", t:"Activation", items:["Légère activation 20min","Stretching dynamique","Visualisation du tournoi","Coucher tôt, repas contrôlé"]},
+      ],
+      tags:["Récupération","Visualisation","Poids de forme","Sommeil","Hydratation"],
+    },
+  ];
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-panel" onClick={e => e.stopPropagation()}>
+        <div className="modal-close">
+          <span className="modal-close-title">PROGRAMME COMPÉTITEUR</span>
+          <button className="modal-close-btn" onClick={onClose} aria-label="Fermer">&times;</button>
+        </div>
+        <div className="modal-body">
+          <div className="m-tag">Performance & Compétition</div>
+          <h2 className="m-h2">PROGRAMME<br/>COMPÉTITEUR</h2>
+          <div className="m-divider"/>
+          <p className="m-text">Un programme de périodisation sur mesure pour préparer les compétitions IBJJF, CFJJB et Grappling. Structuré en 3 phases progressives — volume, intensification, affûtage — pour arriver au pic de forme le jour J.</p>
+
+          <div className="m-grid2" style={{marginBottom:24}}>
+            {[{v:"3 phases",l:"Périodisation"},{v:"3×/sem.",l:"Fréquence idéale"},{v:"22 sem.",l:"Durée cycle"},{v:"IBJJF / CFJJB",l:"Référentiel"}].map(c => (
+              <div key={c.l} className="m-cell"><div className="m-cell-val">{c.v}</div><div className="m-cell-lbl">{c.l}</div></div>
+            ))}
+          </div>
+
+          {phases.map(p => (
+            <div key={p.id} className="comp-phase">
+              <div className="comp-phase-header" onClick={() => setPhase(phase===p.id ? null : p.id)} style={{background:phase===p.id?p.color:"var(--dark2)"}}>
+                <div>
+                  <div className="comp-phase-title">{p.label} — {p.title}</div>
+                  <div className="comp-phase-sub">{p.period}</div>
+                </div>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{transform:phase===p.id?"rotate(180deg)":"none",transition:"transform .2s",flexShrink:0}}>
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </div>
+              {phase === p.id && (
+                <div className="comp-phase-body">
+                  <p className="m-text" style={{marginBottom:16}}>{p.desc}</p>
+                  <div className="pp-week">
+                    {p.seances.map(s => (
+                      <div key={s.j} className="pp-day">
+                        <div className="pp-day-label">{s.j}</div>
+                        <div className="pp-day-title">{s.t}</div>
+                        <ul className="pp-day-items">{s.items.map(item => <li key={item}>{item}</li>)}</ul>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="m-tags">{p.tags.map(t => <span key={t} className="m-tag-pill">{t}</span>)}</div>
+                </div>
+              )}
+            </div>
+          ))}
+
+          <div className="m-section">
+            <div className="m-section-title">Suivi personnalisé</div>
+            <p className="m-text">Ce programme est adapté individuellement lors d'un bilan initial. Karim analyse tes points forts, tes axes de progression et ton calendrier de compétitions pour calibrer chaque phase.</p>
+            <div className="social-links" style={{marginTop:16}}>
+              <a href="mailto:sk.team.jjb@gmail.com?subject=Programme Compétiteur SK TEAM JJB" className="social-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Demander un bilan
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════
+   MODALE PRÉPARATION PHYSIQUE
+══════════════════════════════════════ */
+function ModalPrepPhysique({ open, onClose }) {
+  const [tab, setTab] = useState("force");
+  if (!open) return null;
+
+  const programmes = {
+    force: {
+      label:"Force & Explosivité",
+      intro:"Développer la force fonctionnelle et la puissance explosive spécifiques au BJJ. Accent sur les mouvements multi-articulaires et les chaînes postérieures.",
+      semaine:[
+        {j:"J1 – Lundi", t:"Force max", items:["Squat 4×5 (80%1RM)","Deadlift roumain 3×8","Développé couché 4×5","Rowing barre 4×6","Core : Planche 3×45s"]},
+        {j:"J2 – Mercredi", t:"Explosivité", items:["Box jump 4×5","Medicine ball slam 4×8","Kettlebell swing 4×10","Push press 4×5","Battle rope 4×20s"]},
+        {j:"J3 – Vendredi", t:"Gainage & Spécifique", items:["Pont lutteur 3×20","Hip escape avec résistance 3×10","Sprawl explosif 4×8","Dead bug 3×12","Farmer carry 3×30m"]},
+      ],
+      tags:["Squat","Deadlift","Explosivité","Puissance","Gainage"],
+    },
+    endurance: {
+      label:"Endurance Spécifique BJJ",
+      intro:"Développer la capacité aérobie et anaérobie spécifique aux efforts intermittents du BJJ. Résistance à la fatigue en fin de match.",
+      semaine:[
+        {j:"J1 – Lundi", t:"Intervalles courts", items:["Échauffement 10min","10×30s effort max / 30s récup","Sac de frappe ou shadowboxing","Récup active 5min","Étirements 10min"]},
+        {j:"J2 – Jeudi", t:"Capacité aérobie", items:["Course continue 25–35min Z2","Corde à sauter 4×3min","Gainage cardio 15min","Récupération active"]},
+        {j:"J3 – Samedi", t:"Simulation match", items:["Rounds BJJ 5×7min","1min 30s récup entre rounds","Fréquence cardiaque cible >85%","Debriefing fatigue"]},
+      ],
+      tags:["HIIT","Zone 2","VO2max","Intervalles","Endurance de force"],
+    },
+    mobilite: {
+      label:"Mobilité & Récupération",
+      intro:"Prévenir les blessures, améliorer l'amplitude articulaire et accélérer la récupération entre les séances. Essentiel pour la longévité sur le tatami.",
+      semaine:[
+        {j:"Quotidien – Matin", t:"Réveil articulaire (10min)", items:["Cercles épaules & hanches","Cat-cow 2×10","Hip 90/90 2×45s/côté","Thoracic rotation 2×10","Neck mobility léger"]},
+        {j:"Post-entraînement", t:"Récupération (15min)", items:["Pigeon pose 2min/côté","Frog stretch 2min","Épaules au mur 90s","Hamstring passif 90s/côté","Respiration diaphragmatique"]},
+        {j:"J repos – Dédié", t:"Séance mobilité complète", items:["Yoga BJJ 45min","Deep squat work","Spine mobility flow","Rotateurs hanches","Icing / cryothérapie si besoin"]},
+      ],
+      tags:["Hanches","Épaules","Colonne","Flexibilité","Récupération active"],
+    },
+    circuit: {
+      label:"Circuit Training Tatami",
+      intro:"Entraînement fonctionnel directement sur le tatami, sans matériel. Combine technique BJJ et conditionnement physique dans le même bloc.",
+      semaine:[
+        {j:"Circuit A – 4 tours", t:"Explosivité + Technique", items:["Sprawl 10×","Shoot double leg 8×","Hip escape 10×/côté","Sit-out 8×","Granby roll 5×/côté","Repos 90s entre tours"]},
+        {j:"Circuit B – 3 tours", t:"Endurance Tatami", items:["Turtle recovery 3×30s","Ponte 15×","Shrimp 10×/côté","Technical stand-up 10×","Uchi-komi takedown 10×","Repos 2min entre tours"]},
+        {j:"Circuit C – EMOM 15min", t:"EMOM Spécifique BJJ", items:["Min 1 : 10 sprawls","Min 2 : 15 hip escapes","Min 3 : 10 sit-outs","Répéter 5 cycles","Score : reps totales"]},
+      ],
+      tags:["Sprawl","Hip escape","No-gi","Tatami","Fonctionnel"],
+    },
+  };
+
+  const prog = programmes[tab];
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-panel" onClick={e => e.stopPropagation()}>
+        <div className="modal-close">
+          <span className="modal-close-title">PRÉPARATION PHYSIQUE</span>
+          <button className="modal-close-btn" onClick={onClose} aria-label="Fermer">&times;</button>
+        </div>
+        <div className="modal-body">
+          <div className="m-tag">Conditionnement & Performance</div>
+          <h2 className="m-h2">PRÉPARATION<br/>PHYSIQUE</h2>
+          <div className="m-divider"/>
+          <p className="m-text">4 programmes complémentaires pour développer toutes les qualités physiques du combattant. Choisissez le programme adapté à votre objectif et à votre niveau.</p>
+
+          <div className="pp-tabs">
+            {Object.entries(programmes).map(([k, v]) => (
+              <button key={k} className={"pp-tab"+(tab===k?" active":"")} onClick={() => setTab(k)}>
+                {v.label.split(" ")[0]}
+              </button>
+            ))}
+          </div>
+
+          <div style={{padding:"14px 18px",background:"rgba(192,57,43,.07)",border:"1px solid rgba(192,57,43,.15)",marginBottom:20}}>
+            <div style={{fontFamily:"var(--fd)",fontSize:18,color:"var(--white)",marginBottom:8}}>{prog.label}</div>
+            <p style={{fontSize:13,color:"rgba(255,255,255,.55)",lineHeight:1.75}}>{prog.intro}</p>
+          </div>
+
+          <div className="m-section-title">Planning hebdomadaire</div>
+          <div className="pp-week">
+            {prog.semaine.map(s => (
+              <div key={s.j} className="pp-day">
+                <div className="pp-day-label">{s.j}</div>
+                <div className="pp-day-title">{s.t}</div>
+                <ul className="pp-day-items">{s.items.map(item => <li key={item}>{item}</li>)}</ul>
+              </div>
+            ))}
+          </div>
+          <div className="m-tags">{prog.tags.map(t => <span key={t} className="m-tag-pill">{t}</span>)}</div>
+
+          <div className="m-section">
+            <div className="m-section-title">Intégration avec l'entraînement BJJ</div>
+            <p className="m-text">Ces programmes sont conçus pour s'intégrer au calendrier d'entraînement BJJ sans créer de surcharge. Karim peut élaborer un plan individualisé combinant technique et préparation physique selon vos disponibilités.</p>
+            <div className="social-links" style={{marginTop:16}}>
+              <a href="mailto:sk.team.jjb@gmail.com?subject=Préparation physique SK TEAM JJB" className="social-link">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                Demander un programme perso
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════
    APP PRINCIPAL
-══════════════════════════════ */
+══════════════════════════════════════ */
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -1453,13 +1706,15 @@ export default function App() {
 
   const MODALS = ["disciplines","coach","programme","horaires","club","contact"];
   const NAV_ITEMS = [
-    {id:"disciplines",l:"Disciplines"},
-  {id:"kids",l:"Kids & Ados"},
-  {id:"prive",l:"Cours Privés"},
-    {id:"coach",l:"Coach"},
-    {id:"programme",l:"Programme"},
-    {id:"horaires",l:"Horaires"},
-    {id:"club",l:"Le Club"},
+    {id:"disciplines",  l:"Disciplines"},
+    {id:"kids",         l:"Kids & Ados"},
+    {id:"prive",        l:"Cours Privés"},
+    {id:"coach",        l:"Coach"},
+    {id:"programme",    l:"Programme"},
+    {id:"competiteur",  l:"Compétiteur"},
+    {id:"prepphysique", l:"Prépa Physique"},
+    {id:"horaires",     l:"Horaires"},
+    {id:"club",         l:"Le Club"},
   ];
 
   const open = id => setModal(id);
@@ -1467,12 +1722,14 @@ export default function App() {
 
   const CARDS = [
     {id:"disciplines",n:"01",icon:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",t:"Disciplines",d:"Brazilian Jiu-Jitsu — Grappling — Self-Défense. Trois arts martiaux complémentaires pour progresser à votre rythme."},
-    {id:"coach",n:"02",icon:"M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2 M12 11a4 4 0 100-8 4 4 0 000 8z",t:"Le Coach",d:"Karim Sadat, ceinture noire 1er Dan IBJJF, 13 ans de pratique, 2 000+ heures d’enseignement. Immersion au Brésil chez Melqui Galvão."},
+    {id:"coach",n:"02",icon:"M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2 M12 11a4 4 0 100-8 4 4 0 000 8z",t:"Le Coach",d:"Karim Sadat, ceinture noire 1er Dan IBJJF, 13 ans de pratique, 2 000+ heures d’enseignement. Immersions au Brésil (BJJ College) et aux USA — NY & Floride."},
     {id:"programme",n:"03",icon:"M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2 M9 5a2 2 0 002 2h2a2 2 0 002-2 M9 5a2 2 0 012-2h2a2 2 0 012 2",t:"Programme",d:"34 séances structurées sur 3 mésocycles selon le référentiel SK TEAM BJJ. Adultes débutants 15+."},
     {id:"horaires",n:"04",icon:"M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 6v6l4 2",t:"Horaires & Tarifs",d:"Lundi et Mercredi 19h30–20h30. Tarifs à partir de 150€/an. 1er cours d’essai gratuit."},
     {id:"club",n:"05",icon:"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75",t:"Le Club",d:"Association loi 1901, affiliée FFJDA, fondée à Clamart. Un cadre structuré et bienveillant pour tous les niveaux."},
     {id:"kids",n:"06",icon:"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75",t:"Kids & Ados",d:"BJJ pour les 6–17 ans. 3 groupes par âge : Mini (6-9), Junior (10-14), Ados (15-17). Développement, discipline et confiance en soi."},
-    {id:"contact",n:"07",icon:"M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z",t:"Essai Gratuit",d:"Premier cours gratuit, sans engagement. Venez découvrir le JJB à Clamart dans une ambiance technique et bienveillante."},
+    {id:"competiteur",  n:"08", icon:"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z", t:"Programme Compétiteur", d:"Périodisation sur 3 phases : volume, intensification, affûtage pré-compétition. Pour les pratiquants IBJJF et CFJJB."},
+    {id:"prepphysique", n:"09", icon:"M22 12h-4l-3 9L9 3l-3 9H2",                                                                          t:"Préparation Physique",   d:"4 programmes : Force & Explosivité, Endurance spécifique, Mobilité & Récupération, Circuit tatami. Pour performer et durer."},
+    {id:"contact",      n:"10", icon:"M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z", t:"Essai Gratuit", d:"Premier cours gratuit, sans engagement. Venez découvrir le JJB à Clamart dans une ambiance technique et bienveillante."},
   ];
 
   return (
@@ -1480,7 +1737,9 @@ export default function App() {
       <style>{CSS}</style>
 
       {/* MODALES */}
-      <ModalPrive       open={modal==="prive"}      onClose={close}/>
+      <ModalCompetiteur  open={modal==="competiteur"}  onClose={close}/>
+      <ModalPrepPhysique open={modal==="prepphysique"} onClose={close}/>
+      <ModalPrive        open={modal==="prive"}        onClose={close}/>
       <ModalKids        open={modal==="kids"}        onClose={close} openContact={() => open("contact")}/>
       <ModalDisciplines open={modal==="disciplines"} onClose={close}/>
       <ModalCoach       open={modal==="coach"}       onClose={close}/>
@@ -1548,7 +1807,7 @@ export default function App() {
       <div className="testi-bar">
         <div className="testi-inner">
           {[
-            {t:"“Karim a fait une immersion de 3 mois au Brésil chez les meilleurs. Sa pédagogie est claire, progressive et exigeante.”", n:"Thomas R.", d:"Ceinture bleue · Élève depuis 6 mois"},
+            {t:"“Karim a fait une immersions au Brésil et aux États-Unis chez les meilleurs. Sa pédagogie est claire, progressive et exigeante.”", n:"Thomas R.", d:"Ceinture bleue · Élève depuis 6 mois"},
             {t:"“Ambiance familiale, technique solide. Karim s’adapte à chaque niveau. Le meilleur club BJJ de Clamart.”", n:"Mehdi L.", d:"Élève depuis 1 an"},
             {t:"“J’ai commencé à zéro. En 6 mois j’ai progressé plus vite qu’en 2 ans dans ma salle précédente.”", n:"Sébastien M.", d:"Débutant · Saison 2025"},
           ].map(item => (
@@ -1585,8 +1844,8 @@ export default function App() {
       {/* DIAPORAMA IMMERSION */}
       <section style={{background:"var(--dark)",borderTop:"1px solid var(--border)",padding:"60px 0"}}>
         <div className="home-section-inner">
-          <div className="home-section-tag">Immersion Brésil</div>
-          <h2 className="home-section-title" style={{marginBottom:0}}>3 MOIS AU<br/>BJJ COLLEGE</h2>
+          <div className="home-section-tag">Immersion Brésil & États-Unis</div>
+          <h2 className="home-section-title" style={{marginBottom:0}}>IMMERSION<br/>BRÉSIL & USA</h2>
           <HomeSlider photos={GALLERY_PHOTOS}/>
         </div>
       </section>
@@ -1597,7 +1856,7 @@ export default function App() {
           <div className="about-left">
             <div className="tag">Votre coach</div>
             <h2>KARIM<br/>SADAT</h2>
-            <p>Ceinture noire 1er Dan IBJJF, CQP MAM, 13+ ans de pratique, 2 000+ heures d’enseignement. Compétiteur IBJJF European Championships. Immersion de 3 mois au Brésil au BJJ College.</p>
+            <p>Ceinture noire 1er Dan IBJJF, CQP MAM, 13+ ans de pratique, 2 000+ heures d’enseignement. Compétiteur IBJJF European Championships. Immersion au Brésil (BJJ College — Melqui Galvão) et aux États-Unis — New York (Marcelo Garcia, Vitor Ribeiro) et Floride (Cyborg, Robson Moura, Renato Tavares).</p>
             <button className="btn-red" onClick={() => open("coach")}>Découvrir le coach</button>
             <div className="about-stats" style={{marginTop:36}}>
               {[["13+","Ans de pratique"],["2 000+","Heures enseignées"],["100+","Adultes formés"],["60+","Jeunes encadrés"]].map(([n,l]) => (
@@ -1608,8 +1867,8 @@ export default function App() {
           <div className="about-right">
             <img className="about-photo" src={coachPhoto} alt="Karim Sadat — Coach BJJ SK TEAM JJB Clamart" loading="lazy"/>
             <div className="about-badge">
-              <div className="about-badge-title">Immersion Brésil</div>
-              <div className="about-badge-sub">BJJ College · Melqui Galvão</div>
+              <div className="about-badge-title">Immersion Brésil & USA</div>
+              <div className="about-badge-sub">Brésil · New York · Floride</div>
             </div>
           </div>
         </div>
