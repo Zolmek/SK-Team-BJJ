@@ -59,11 +59,11 @@ const GALLERY_PHOTOS = [
   { img: gallery02, cap: "Entraînement Gi",          sub: "BJJ College by Melqui Galvão" },
   { img: gallery03, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
   { img: gallery04, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery05, cap: "Photo de groupe — No-Gi", sub: "BJJ College by Melqui Galvão" },
-  { img: gallery06, cap: "Photo de groupe — No-Gi", sub: "BJJ College — São Paulo" },
+  { img: gallery05, cap: "Cours Grappling — No-Gi", sub: "BJJ College by Melqui Galvão" },
+  { img: gallery06, cap: "Cours Grappling — No-Gi", sub: "BJJ College — São Paulo" },
   { img: gallery07, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
   { img: gallery08, cap: "Marcio Faraco",            sub: "Préparateur mental BJJ" },
-  { img: gallery09, cap: "Joao Miyao",               sub: "Stage Z-TEAM Paris" },
+  { img: gallery09, cap: "Joao Miyao",               sub: "Stage Z-TEAM — Boulogne-Billancourt" },
   { img: gallery10, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
   { img: gallery11, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
   { img: gallery12, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
@@ -71,8 +71,8 @@ const GALLERY_PHOTOS = [
   { img: gallery14, cap: "Photo de groupe — Gi", sub: "BJJ College by Melqui Galvão" },
   { img: gallery15, cap: "Ceintures noires", sub: "BJJ College — São Paulo" },
   { img: gallery16, cap: "Ceintures noires — Gi", sub: "BJJ College by Melqui Galvão" },
-  { img: gallery17, cap: "Immersion No-Gi", sub: "BJJ College — Melqui Galvão" },
-  { img: gallery18, cap: "Entraînement No-Gi", sub: "BJJ College — São Paulo" },
+  { img: gallery17, cap: "Cours Grappling — No-Gi", sub: "BJJ College by Melqui Galvão" },
+  { img: gallery18, cap: "Cours Grappling — No-Gi", sub: "BJJ College — São Paulo" },
   { img: gallery19, cap: "Préparation physique", sub: "BJJ College by Melqui Galvão" },
   { img: gallery20, cap: "Tatami — Gi", sub: "BJJ College — São Paulo" },
   { img: gallery21, cap: "Entraînement Gi", sub: "BJJ College by Melqui Galvão" },
@@ -89,8 +89,8 @@ const GALLERY_PHOTOS = [
   { img: gallery32, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
   { img: gallery33, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
   { img: gallery34, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
-  { img: gallery35, cap: "Entraînement No-Gi",       sub: "BJJ College — São Paulo" },
-  { img: gallery36, cap: "Entraînement No-Gi",       sub: "BJJ College — São Paulo" },
+  { img: gallery35, cap: "Cours Grappling — No-Gi", sub: "BJJ College — São Paulo" },
+  { img: gallery36, cap: "Cours Grappling — No-Gi", sub: "BJJ College — São Paulo" },
   { img: gallery37, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
   { img: gallery38, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
   { img: gallery39, cap: "Immersion Brésil",         sub: "BJJ College — São Paulo" },
@@ -810,7 +810,7 @@ function HomeSlider({ photos }) {
       onMouseEnter={handlePause}
       onMouseLeave={handleResume}
       role="region"
-      aria-label="Diaporama immersions Brésil & États-Unis"
+      aria-label="Diaporama immersions Brésil — BJJ College Jundiaí"
     >
       {/* Fond flouté dynamique — suit la photo courante */}
       <div className="home-slider-bg" style={{backgroundImage:`url(${photos[slide].img})`}}/>
@@ -1041,7 +1041,7 @@ function GalleryWithLightbox({ photos }) {
 ══════════════════════════════════════ */
 
 
-function ModalPrive({ open, onClose }) {
+function ModalPrive({ open, onClose, openContact }) {
   const [discipline, setDiscipline] = useState(null);
   if (!open) return null;
   return (
@@ -1153,11 +1153,8 @@ function ModalPrive({ open, onClose }) {
           <div className="m-section">
             <div className="m-section-title">Réserver votre cours</div>
             <p className="m-text">Les cours privés se déroulent à Clamart (92140). Contactez-nous pour convenir d’un créneau.</p>
-            <div className="social-links" style={{marginTop:16}}>
-              <a href={"mailto:sk.team.jjb@gmail.com?subject=Réservation cours privé " + (discipline==="bjj" ? "BJJ" : discipline==="grappling" ? "Grappling" : "") + " SK TEAM JJB"} className="social-link">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                Réserver par email
-              </a>
+            <div className="m-cta" style={{marginTop:16}}>
+              <button className="btn-red" onClick={() => { onClose(); setTimeout(openContact, 200); }}>Réserver mon cours privé</button>
             </div>
           </div>
         </div>
@@ -1252,7 +1249,7 @@ function ModalKids({ open, onClose, openContact }) {
   );
 }
 
-function ModalDisciplines({ open, onClose }) {
+function ModalDisciplines({ open, onClose, openContact }) {
   if (!open) return null;
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -1277,7 +1274,7 @@ function ModalDisciplines({ open, onClose }) {
               <div className="m-tags">{disc.tags.map(t => <span key={t} className="m-tag-pill">{t}</span>)}</div>
             </div>
           ))}
-          <div className="m-cta"><button className="btn-red" onClick={onClose}>Essai gratuit</button></div>
+          <div className="m-cta"><button className="btn-red" onClick={() => { onClose(); setTimeout(openContact, 200); }}>Réserver mon essai gratuit</button></div>
         </div>
       </div>
     </div>
@@ -1299,7 +1296,7 @@ function ModalCoach({ open, onClose }) {
           <h2 className="m-h2">KARIM<br/>SADAT</h2>
           <div className="m-divider"/>
           <p className="m-text">Pratiquant de Brazilian Jiu-Jitsu depuis plus de 13 ans, Karim Sadat cumule plus de 2 000 heures d’enseignement. Compétiteur au niveau national et international — Championnats de France, IBJJF European Championships.</p>
-          <p className="m-text">Titulaire du CQP Moniteur Arts Martiaux (spécialité JJB) et arbitre en formation auprès de la FFJDA. Immersion au Brésil au BJJ College by Melqui Galvão, et aux États-Unis à New York (Marcelo Garcia Academy, Vitor Ribeiro Shaoling) et en Floride (Roberto Cyborg De Abreu Filho, Robson Moura, Renato Tavares).</p>
+          <p className="m-text">Titulaire du CQP Moniteur Arts Martiaux (spécialité JJB) et arbitre en formation auprès de la FFJDA. Immersion au Brésil — BJJ College by Melqui Galvão à Jundiaí, São Paulo. Stage Z-TEAM avec Joao Miyao à Boulogne-Billancourt.</p>
           <div className="m-grid2">
             {[{v:"CN 1er Dan",l:"IBJJF / CFJJB"},{v:"CN Grappling",l:"FFL"},{v:"CQP MAM",l:"Moniteur Arts Martiaux"},{v:"AFGSU2",l:"FFJDA"},{v:"2 000+ heures",l:"Enseignement"},{v:"13+ ans",l:"Pratique"}].map(c => (
               <div key={c.v} className="m-cell">
@@ -1309,7 +1306,7 @@ function ModalCoach({ open, onClose }) {
             ))}
           </div>
           <div className="m-section">
-            <div className="m-section-title">Immersions — Brésil & États-Unis</div>
+            <div className="m-section-title">Immersion — Brésil</div>
             <div className="immersion-grid">
               <div className="immersion-item">
                 <img src={IMG.melqui} alt="Karim Sadat avec Melqui Galvão" loading="lazy"/>
@@ -1324,7 +1321,7 @@ function ModalCoach({ open, onClose }) {
             <div style={{marginTop:20}}>
               <div style={{fontFamily:"var(--fc)",fontSize:10,fontWeight:700,letterSpacing:"3px",textTransform:"uppercase",color:"var(--red)",marginBottom:12}}>🇧🇷 Brésil — São Paulo</div>
               <ul className="m-list">
-                <li><strong style={{color:"var(--white)",fontFamily:"var(--fc)",letterSpacing:"1px"}}>BJJ College by Melqui Galvão</strong><span style={{marginLeft:8,color:"rgba(255,255,255,.4)"}}>São Paulo</span></li>
+                <li><strong style={{color:"var(--white)",fontFamily:"var(--fc)",letterSpacing:"1px"}}>BJJ College by Melqui Galvão</strong><span style={{marginLeft:8,color:"rgba(255,255,255,.4)"}}>Jundiaí, São Paulo</span></li>
               </ul>
             </div>
             {/* USA New York */}
@@ -1344,6 +1341,7 @@ function ModalCoach({ open, onClose }) {
                 <li><strong style={{color:"var(--white)",fontFamily:"var(--fc)",letterSpacing:"1px"}}>Renato Tavares</strong><span style={{marginLeft:8,color:"rgba(255,255,255,.4)"}}>Floride</span></li>
               </ul>
             </div>
+
           </div>
           <div className="social-links">
             <a href="https://www.instagram.com/skteamjjb" target="_blank" rel="noopener noreferrer" className="social-link">
@@ -1685,7 +1683,7 @@ function ModalReglement({ open, onClose }) {
 /* ══════════════════════════════════════
    MODALE COMPÉTITEUR
 ══════════════════════════════════════ */
-function ModalCompetiteur({ open, onClose }) {
+function ModalCompetiteur({ open, onClose, openContact }) {
   const [phase, setPhase] = useState(null);
   if (!open) return null;
 
@@ -1773,11 +1771,8 @@ function ModalCompetiteur({ open, onClose }) {
           <div className="m-section">
             <div className="m-section-title">Suivi personnalisé</div>
             <p className="m-text">Ce programme est adapté individuellement lors d'un bilan initial. Karim analyse tes points forts, tes axes de progression et ton calendrier de compétitions pour calibrer chaque phase.</p>
-            <div className="social-links" style={{marginTop:16}}>
-              <a href="mailto:sk.team.jjb@gmail.com?subject=Programme Compétiteur SK TEAM JJB" className="social-link">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                Demander un bilan
-              </a>
+            <div className="m-cta" style={{marginTop:16}}>
+              <button className="btn-red" onClick={() => { onClose(); setTimeout(openContact, 200); }}>Demander un bilan gratuit</button>
             </div>
           </div>
         </div>
@@ -1789,7 +1784,7 @@ function ModalCompetiteur({ open, onClose }) {
 /* ══════════════════════════════════════
    MODALE PRÉPARATION PHYSIQUE
 ══════════════════════════════════════ */
-function ModalPrepPhysique({ open, onClose }) {
+function ModalPrepPhysique({ open, onClose, openContact }) {
   const [tab, setTab] = useState("force");
   if (!open) return null;
 
@@ -1879,11 +1874,8 @@ function ModalPrepPhysique({ open, onClose }) {
           <div className="m-section">
             <div className="m-section-title">Intégration avec l'entraînement BJJ</div>
             <p className="m-text">Ces programmes sont conçus pour s'intégrer au calendrier d'entraînement BJJ sans créer de surcharge. Karim peut élaborer un plan individualisé combinant technique et préparation physique selon vos disponibilités.</p>
-            <div className="social-links" style={{marginTop:16}}>
-              <a href="mailto:sk.team.jjb@gmail.com?subject=Préparation physique SK TEAM JJB" className="social-link">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                Demander un programme perso
-              </a>
+            <div className="m-cta" style={{marginTop:16}}>
+              <button className="btn-red" onClick={() => { onClose(); setTimeout(openContact, 200); }}>Demander un programme perso</button>
             </div>
           </div>
         </div>
@@ -1986,11 +1978,11 @@ export default function App() {
 
       {/* MODALES */}
       <ModalReglement    open={modal==="reglement"}   onClose={close}/>
-      <ModalCompetiteur  open={modal==="competiteur"}  onClose={close}/>
-      <ModalPrepPhysique open={modal==="prepphysique"} onClose={close}/>
-      <ModalPrive        open={modal==="prive"}        onClose={close}/>
+      <ModalCompetiteur  open={modal==="competiteur"}  onClose={close} openContact={() => open("contact")}/>
+      <ModalPrepPhysique open={modal==="prepphysique"} onClose={close} openContact={() => open("contact")}/>
+      <ModalPrive        open={modal==="prive"}        onClose={close} openContact={() => open("contact")}/>
       <ModalKids        open={modal==="kids"}        onClose={close} openContact={() => open("contact")}/>
-      <ModalDisciplines open={modal==="disciplines"} onClose={close}/>
+      <ModalDisciplines open={modal==="disciplines"} onClose={close} openContact={() => open("contact")}/>
       <ModalCoach       open={modal==="coach"}       onClose={close}/>
       <ModalProgramme   open={modal==="programme"}   onClose={close}/>
       <ModalHoraires    open={modal==="horaires"}    onClose={close} openContact={() => open("contact")}/>
@@ -2068,7 +2060,7 @@ export default function App() {
       <div className="testi-bar">
         <div className="testi-inner">
           {[
-            {t:"“Karim a fait une immersions au Brésil et aux États-Unis chez les meilleurs. Sa pédagogie est claire, progressive et exigeante.”", n:"Thomas R.", d:"Ceinture bleue · Élève depuis 6 mois"},
+            {t:"“Karim a fait une immersions au Brésil chez Melqui Galvão. Sa pédagogie est claire, progressive et exigeante.”", n:"Thomas R.", d:"Ceinture bleue · Élève depuis 6 mois"},
             {t:"“Ambiance familiale, technique solide. Karim s’adapte à chaque niveau. Le meilleur club BJJ de Clamart.”", n:"Mehdi L.", d:"Élève depuis 1 an"},
             {t:"“J’ai commencé à zéro. En 6 mois j’ai progressé plus vite qu’en 2 ans dans ma salle précédente.”", n:"Sébastien M.", d:"Débutant · Saison 2025"},
           ].map(item => (
@@ -2111,8 +2103,8 @@ export default function App() {
       {/* DIAPORAMA IMMERSION */}
       <section style={{background:"var(--dark)",borderTop:"1px solid var(--border)",padding:"60px 0"}}>
         <div className="home-section-inner">
-          <div className="home-section-tag">Immersion Brésil & États-Unis</div>
-          <h2 className="home-section-title" style={{marginBottom:0}}>IMMERSION<br/>BRÉSIL & USA</h2>
+          <div className="home-section-tag">Immersion Brésil</div>
+          <h2 className="home-section-title" style={{marginBottom:0}}>IMMERSION<br/>BRÉSIL</h2>
           <HomeSlider photos={GALLERY_PHOTOS}/>
         </div>
       </section>
@@ -2123,7 +2115,7 @@ export default function App() {
           <div className="about-left">
             <div className="tag">Votre coach</div>
             <h2>KARIM<br/>SADAT</h2>
-            <p>Ceinture noire 1er Dan IBJJF, CQP MAM, 13+ ans de pratique, 2 000+ heures d’enseignement. Compétiteur IBJJF European Championships. Immersion au Brésil (BJJ College — Melqui Galvão) et aux États-Unis — New York (Marcelo Garcia, Vitor Ribeiro) et Floride (Cyborg, Robson Moura, Renato Tavares).</p>
+            <p>Ceinture noire 1er Dan IBJJF, CQP MAM, 13+ ans de pratique, 2 000+ heures d’enseignement. Compétiteur IBJJF European Championships. Immersion au Brésil (BJJ College — Melqui Galvão) et au BJJ College by Melqui Galvão, Jundiaí.</p>
             <button className="btn-red" onClick={() => open("coach")}>Découvrir le coach</button>
             <div className="about-stats" style={{marginTop:36}}>
               {[["13+","Ans de pratique"],["2 000+","Heures enseignées"],["100+","Adultes formés"],["60+","Jeunes encadrés"]].map(([n,l]) => (
@@ -2134,8 +2126,8 @@ export default function App() {
           <div className="about-right">
             <img className="about-photo" src={coachPhoto} alt="Karim Sadat — Coach BJJ SK TEAM JJB Clamart" loading="lazy"/>
             <div className="about-badge">
-              <div className="about-badge-title">Immersion Brésil & USA</div>
-              <div className="about-badge-sub">Brésil · New York · Floride</div>
+              <div className="about-badge-title">Immersion Brésil</div>
+              <div className="about-badge-sub">BJJ College — Jundiaí, São Paulo</div>
             </div>
           </div>
         </div>
