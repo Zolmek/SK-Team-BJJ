@@ -1169,7 +1169,7 @@ function ModalKids({ open, onClose, openContact }) {
               <li>Cours encadrés par Karim Sadat, Ceinture Noire 1er Dan IBJJF</li>
               <li>Groupes homogènes par tranches d’âge</li>
               <li>Tenue : kimono (gi) fourni pour le 1er cours</li>
-              <li>Licence FFJDA obligatoire (assurance incluse)</li>
+              <li>Licence FFJDA / CFJJB obligatoire (assurance incluse)</li>
               <li>Tarifs spéciaux famille disponibles</li>
               <li>1er cours d’essai gratuit</li>
             </ul>
@@ -1360,12 +1360,12 @@ function ModalHoraires({ open, onClose, openContact }) {
               <div className="m-tarif">
                 <div className="m-tarif-price"><sup>€</sup>150<span className="per">/an</span></div>
                 <div className="m-tarif-lbl">Découverte</div>
-                <ul className="m-tarif-items"><li>1 séance / semaine</li><li>Licence FFJDA</li><li>Programme SK TEAM</li></ul>
+                <ul className="m-tarif-items"><li>1 séance / semaine</li><li>Licence FFJDA / CFJJB</li><li>Programme SK TEAM</li></ul>
               </div>
               <div className="m-tarif feat">
                 <div className="m-tarif-price"><sup>€</sup>220<span className="per">/an</span></div>
                 <div className="m-tarif-lbl">Complète</div>
-                <ul className="m-tarif-items"><li>Accès illimité</li><li>Licence FFJDA</li><li>Suivi progression</li></ul>
+                <ul className="m-tarif-items"><li>Accès illimité</li><li>Licence FFJDA / CFJJB</li><li>Suivi progression</li></ul>
               </div>
               <div className="m-tarif">
                 <div className="m-tarif-price"><sup>€</sup>300<span className="per">/an</span></div>
@@ -1397,7 +1397,7 @@ function ModalClub({ open, onClose }) {
           <div className="m-tag">Association loi 1901</div>
           <h2 className="m-h2">SK TEAM<br/>JJB</h2>
           <div className="m-divider"/>
-          <p className="m-text">SK TEAM JJB est une association déclarée loi 1901, affiliée à la Fédération Française de Judo, Jujitsu, Kendo et Disciplines Associées (FFJDA) et au Comité Départemental Judo 92.</p>
+          <p className="m-text">SK TEAM JJB est une association déclarée loi 1901, affiliée à la Fédération Française de Judo, Jujitsu, Kendo et Disciplines Associées (FFJDA), à la Confédération Française de Jiu-Jitsu Brésilien (CFJJB) et au Comité Départemental Judo 92.</p>
           <p className="m-text">Fondée à Clamart (92140), l’association propose un cadre structuré, progressif et bienveillant pour tous les niveaux — du débutant complet au compétiteur.</p>
           <div className="m-grid2">
             {[{v:"FFJDA",l:"Affiliée"},{v:"IBJJF",l:"Certifiée"},{v:"FFL",l:"Affiliée Grappling"},{v:"Loi 1901",l:"Association déclarée"}].map(c => (
@@ -1713,7 +1713,7 @@ export default function App() {
     document.documentElement.lang = "fr";
     document.title = "SK TEAM JJB — Brazilian Jiu-Jitsu & Grappling à Clamart (92140)";
     const m = (n,c,p) => { const a=p?"property":"name"; let el=document.querySelector("meta["+a+"=\""+n+"\"]"); if(!el){el=document.createElement("meta");el.setAttribute(a,n);document.head.appendChild(el);} el.setAttribute("content",c); };
-    m("description","SK TEAM JJB — Club de Brazilian Jiu-Jitsu, Grappling et Self-Défense à Clamart (92140). Ceinture noire 1er Dan IBJJF, affilié FFJDA. Cours adultes dès 15 ans. 1er cours d'essai gratuit.");
+    m("description","SK TEAM JJB — Club de Brazilian Jiu-Jitsu, Grappling et Self-Défense à Clamart (92140). Ceinture noire 1er Dan IBJJF, affilié FFJDA & CFJJB. Cours adultes dès 15 ans. 1er cours d'essai gratuit.");
     m("keywords","Brazilian Jiu-Jitsu Clamart, BJJ 92140, Grappling Clamart, SK TEAM JJB, arts martiaux Clamart, self-défense Clamart, JJB Hauts-de-Seine, club JJB banlieue sud Paris, ceinture noire BJJ");
     m("robots","index, follow");
     m("og:type","website",true); m("og:title","SK TEAM JJB — BJJ Clamart",true);
@@ -1757,7 +1757,7 @@ export default function App() {
     {id:"coach",n:"02",icon:"M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2 M12 11a4 4 0 100-8 4 4 0 000 8z",t:"Le Coach",d:"Karim Sadat, ceinture noire 1er Dan IBJJF, 13 ans de pratique, 2 000+ heures d’enseignement. Immersions au Brésil (BJJ College) et aux USA — NY & Floride."},
     {id:"programme",n:"03",icon:"M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2 M9 5a2 2 0 002 2h2a2 2 0 002-2 M9 5a2 2 0 012-2h2a2 2 0 012 2",t:"Programme",d:"34 séances structurées sur 3 mésocycles selon le référentiel SK TEAM BJJ. Adultes débutants 15+."},
     {id:"horaires",n:"04",icon:"M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 6v6l4 2",t:"Horaires & Tarifs",d:"Lundi et Mercredi 19h30–20h30. Tarifs à partir de 150€/an. 1er cours d’essai gratuit."},
-    {id:"club",n:"05",icon:"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75",t:"Le Club",d:"Association loi 1901, affiliée FFJDA, fondée à Clamart. Un cadre structuré et bienveillant pour tous les niveaux."},
+    {id:"club",n:"05",icon:"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75",t:"Le Club",d:"Association loi 1901, affiliée FFJDA & CFJJB, fondée à Clamart. Un cadre structuré et bienveillant pour tous les niveaux."},
     {id:"kids",n:"06",icon:"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75",t:"Kids & Ados",d:"BJJ pour les 6–17 ans. 3 groupes par âge : Mini (6-9), Junior (10-14), Ados (15-17). Développement, discipline et confiance en soi."},
     {id:"competiteur",  n:"08", icon:"M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z", t:"Programme Compétiteur", d:"Périodisation sur 3 phases : volume, intensification, affûtage pré-compétition. Pour les pratiquants IBJJF et CFJJB."},
     {id:"prepphysique", n:"09", icon:"M22 12h-4l-3 9L9 3l-3 9H2",                                                                          t:"Préparation Physique",   d:"4 programmes : Force & Explosivité, Endurance spécifique, Mobilité & Récupération, Circuit tatami. Pour performer et durer."},
@@ -1821,7 +1821,7 @@ export default function App() {
             <em>BRAZILIAN</em>
             JIU-JITSU
           </h1>
-          <p className="hero-desc">Club associatif affilié FFJDA, fondé à Clamart. Adultes débutants et compétiteurs — encadrés par un ceinture noire 1<sup>er</sup> Dan IBJJF.</p>
+          <p className="hero-desc">Club associatif affilié FFJDA & CFJJB, fondé à Clamart. Adultes débutants et compétiteurs — encadrés par un ceinture noire 1<sup>er</sup> Dan IBJJF.</p>
           <div className="hero-actions">
             <button className="btn-red" onClick={() => open("contact")}>Essai Gratuit</button>
             <button className="btn-ghost-white" onClick={() => open("programme")}>Voir le programme</button>
@@ -1926,8 +1926,8 @@ export default function App() {
           <div className="footer-grid">
             <div>
               <div className="footer-logo"><SKLogo size={36}/><span className="footer-logo-name">SK TEAM JJB</span></div>
-              <p className="footer-tagline">Brazilian Jiu-Jitsu, Grappling & Self-Défense à Clamart (92140). Association loi 1901, affiliée FFJDA.</p>
-              <div className="footer-affil">{["FFJDA","IBJJF","FFL","Loi 1901"].map(b => <span key={b} className="footer-badge">{b}</span>)}</div>
+              <p className="footer-tagline">Brazilian Jiu-Jitsu, Grappling & Self-Défense à Clamart (92140). Association loi 1901, affiliée FFJDA & CFJJB.</p>
+              <div className="footer-affil">{["FFJDA","CFJJB","IBJJF","FFL","Loi 1901"].map(b => <span key={b} className="footer-badge">{b}</span>)}</div>
             </div>
             <div>
               <div className="footer-col-title">Navigation</div>
