@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import skLogo  from "./assets/logo.png";
 import coachPhoto from "./assets/coach.jpg";
-import imgHero   from "./assets/hero.jpg";
+import imgHero from "./assets/hero.webp";
 import imgDisc   from "./assets/disc.jpg";
 import imgAction from "./assets/action.jpg";
 import imgCta    from "./assets/cta.jpg";
