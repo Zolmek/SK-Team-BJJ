@@ -1428,21 +1428,34 @@ function ModalHoraires({ open, onClose, openContact }) {
           </div>
           <div className="m-section">
             <div className="m-section-title">Tarifs 2025–2026</div>
-            <div className="m-tarif-grid">
+            <div className="m-tarif-grid" style={{gridTemplateColumns:"repeat(2,1fr)"}}>
               <div className="m-tarif">
-                <div className="m-tarif-price"><sup>€</sup>150<span className="per">/an</span></div>
-                <div className="m-tarif-lbl">Découverte</div>
-                <ul className="m-tarif-items"><li>1 séance / semaine</li><li>Licence FFJDA / CFJJB</li><li>Programme SK TEAM</li></ul>
+                <div className="m-tarif-price"><sup>€</sup>200<span className="per">/an</span></div>
+                <div className="m-tarif-lbl">Kids &amp; Ados</div>
+                <ul className="m-tarif-items"><li>6 à 17 ans</li><li>Licence FFJDA / CFJJB</li><li>Programme Kids SK TEAM</li></ul>
               </div>
               <div className="m-tarif feat">
-                <div className="m-tarif-price"><sup>€</sup>220<span className="per">/an</span></div>
-                <div className="m-tarif-lbl">Complète</div>
-                <ul className="m-tarif-items"><li>Accès illimité</li><li>Licence FFJDA / CFJJB</li><li>Suivi progression</li></ul>
+                <div className="m-tarif-price"><sup>€</sup>300<span className="per">/an</span></div>
+                <div className="m-tarif-lbl">Adulte</div>
+                <ul className="m-tarif-items"><li>Dès 15 ans</li><li>Licence FFJDA / CFJJB</li><li>Programme SK TEAM</li></ul>
+              </div>
+            </div>
+            <div className="m-section-title" style={{marginTop:20}}>Tarifs Famille</div>
+            <div className="m-tarif-grid" style={{gridTemplateColumns:"repeat(3,1fr)"}}>
+              <div className="m-tarif">
+                <div className="m-tarif-price"><sup>€</sup>350<span className="per">/an</span></div>
+                <div className="m-tarif-lbl">2 Enfants</div>
+                <ul className="m-tarif-items"><li>2 enfants inscrits</li><li>Licences incluses</li><li>Économie de 50€</li></ul>
+              </div>
+              <div className="m-tarif feat">
+                <div className="m-tarif-price"><sup>€</sup>450<span className="per">/an</span></div>
+                <div className="m-tarif-lbl">Adulte + 1 Enfant</div>
+                <ul className="m-tarif-items"><li>1 adulte + 1 enfant</li><li>Licences incluses</li><li>Économie de 50€</li></ul>
               </div>
               <div className="m-tarif">
-                <div className="m-tarif-price"><sup>€</sup>300<span className="per">/an</span></div>
-                <div className="m-tarif-lbl">Premium</div>
-                <ul className="m-tarif-items"><li>Accès illimité</li><li>Cours privés</li><li>Suivi compétition</li></ul>
+                <div className="m-tarif-price"><sup>€</sup>500<span className="per">/an</span></div>
+                <div className="m-tarif-lbl">3 Enfants</div>
+                <ul className="m-tarif-items"><li>3 enfants inscrits</li><li>Licences incluses</li><li>Économie de 100€</li></ul>
               </div>
             </div>
             <p style={{fontSize:12,color:"var(--muted)",marginTop:12,lineHeight:1.7}}>1er cours d’essai gratuit, sans engagement. Pass Sport et ANCV acceptés. Tarifs indicatifs — nous contacter pour tarifs définitifs.</p>
@@ -2193,26 +2206,4 @@ export default function App() {
             <div>
               <div className="footer-col-title">Navigation</div>
               <ul className="footer-links">
-                {NAV_ITEMS.map(({id,l}) => <li key={id}><button onClick={() => open(id)}>{l}</button></li>)}
-                <li><button onClick={() => open("contact")}>Essai gratuit</button></li>
-              </ul>
-            </div>
-            <div>
-              <div className="footer-col-title">Contact</div>
-              <ul className="footer-links">
-                <li><a href="mailto:sk.team.jjb@gmail.com">sk.team.jjb@gmail.com</a></li>
-                <li className="plain">Clamart · 92140</li>
-                <li className="plain">Hauts-de-Seine</li>
-                <li style={{marginTop:14}}><a href="https://www.instagram.com/skteamjjb" target="_blank" rel="noopener noreferrer">Instagram @skteamjjb</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p className="footer-copy">© 2025–2026 SK TEAM JJB — Association loi 1901 · Clamart (92140)</p>
-            <p className="footer-copy">Tous droits réservés</p>
-          </div>
-        </div>
-      </footer>
-    </>
-  );
-}
+                {NAV_ITEMS.map(({id,l}) => <li key={id}><button onClick={() => open(id)}>{l}</
