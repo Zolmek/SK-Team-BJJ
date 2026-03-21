@@ -219,6 +219,9 @@ img { max-width:100%; display:block; height:auto; }
   background-size:cover; background-position:center;
   will-change:transform;
   transform:translateZ(0);
+}@media(max-width:768px) {
+  .hero-bg { background-position:30% center; }
+  .hero { min-height:100svh; }
 }
 @media(max-width:768px) {
   .hero-bg {
