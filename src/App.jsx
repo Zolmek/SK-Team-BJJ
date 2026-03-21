@@ -220,6 +220,12 @@ img { max-width:100%; display:block; height:auto; }
   will-change:transform;
   transform:translateZ(0);
 }
+@media(max-width:768px) {
+  .hero-bg {
+    background-position:30% center;
+    background-size:cover;
+  }
+}
 .hero-grad {
   position:absolute; inset:0;
   background:linear-gradient(
@@ -726,6 +732,8 @@ img { max-width:100%; }
   .home-section-inner, .about-inner, .cta-strip-inner, .footer-inner { padding:0 20px; }
   .container { padding:0 20px; }
   .m-tarif-grid { grid-template-columns:1fr 1fr; }
+  .hero { min-height:100svh; }
+  .hero-h1 { font-size:clamp(60px,15vw,120px); }
 }
 `;
 
