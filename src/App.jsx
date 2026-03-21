@@ -1,56 +1,56 @@
 import React, { useState, useEffect } from "react";
 
 import skLogo  from "./assets/logo.png";
-import coachPhoto from "./assets/coach.jpg";
-import imgHero from "./assets/hero.webp";
-import imgDisc   from "./assets/disc.jpg";
-import imgAction from "./assets/action.jpg";
-import imgCta    from "./assets/cta.jpg";
-import imgMelqui from "./assets/melqui.jpg";
-import imgMika   from "./assets/mika.jpg";
-import gallery00 from "./assets/gallery_00.jpg";
-import gallery01 from "./assets/gallery_01.jpg";
-import gallery02 from "./assets/gallery_02.jpg";
-import gallery03 from "./assets/gallery_03.jpg";
-import gallery04 from "./assets/gallery_04.jpg";
-import gallery05 from "./assets/gallery_05.jpg";
-import gallery06 from "./assets/gallery_06.jpg";
-import gallery07 from "./assets/gallery_07.jpg";
-import gallery08 from "./assets/gallery_08.jpg";
-import gallery09 from "./assets/gallery_09.jpg";
-import gallery10 from "./assets/gallery_10.jpg";
-import gallery11 from "./assets/gallery_11.jpg";
-import gallery12 from "./assets/gallery_12.jpg";
-import gallery13 from "./assets/gallery_13.jpg";
-import gallery14 from "./gallery_14.jpg";
-import gallery15 from "./gallery_15.jpg";
-import gallery16 from "./gallery_16.jpg";
-import gallery17 from "./gallery_17.jpg";
-import gallery18 from "./gallery_18.jpg";
-import gallery19 from "./gallery_19.jpg";
-import gallery20 from "./gallery_20.jpg";
-import gallery21 from "./gallery_21.jpg";
-import gallery22 from "./gallery_22.jpg";
-import gallery23 from "./gallery_23.jpg";
-import gallery24 from "./gallery_24.jpg";
-import gallery25 from "./gallery_25.jpg";
+import coachPhoto from "./assets/coach.webp";
+import imgHero   from "./assets/hero.webp";
+import imgDisc   from "./assets/disc.webp";
+import imgAction from "./assets/action.webp";
+import imgCta    from "./assets/cta.webp";
+import imgMelqui from "./assets/melqui.webp";
+import imgMika   from "./assets/mika.webp";
+import gallery00 from "./assets/gallery_00.webp";
+import gallery01 from "./assets/gallery_01.webp";
+import gallery02 from "./assets/gallery_02.webp";
+import gallery03 from "./assets/gallery_03.webp";
+import gallery04 from "./assets/gallery_04.webp";
+import gallery05 from "./assets/gallery_05.webp";
+import gallery06 from "./assets/gallery_06.webp";
+import gallery07 from "./assets/gallery_07.webp";
+import gallery08 from "./assets/gallery_08.webp";
+import gallery09 from "./assets/gallery_09.webp";
+import gallery10 from "./assets/gallery_10.webp";
+import gallery11 from "./assets/gallery_11.webp";
+import gallery12 from "./assets/gallery_12.webp";
+import gallery13 from "./assets/gallery_13.webp";
+import gallery14 from "./assets/gallery_14.webp";
+import gallery15 from "./assets/gallery_15.webp";
+import gallery16 from "./assets/gallery_16.webp";
+import gallery17 from "./assets/gallery_17.webp";
+import gallery18 from "./assets/gallery_18.webp";
+import gallery19 from "./assets/gallery_19.webp";
+import gallery20 from "./assets/gallery_20.webp";
+import gallery21 from "./assets/gallery_21.webp";
+import gallery22 from "./assets/gallery_22.webp";
+import gallery23 from "./assets/gallery_23.webp";
+import gallery24 from "./assets/gallery_24.webp";
+import gallery25 from "./assets/gallery_25.webp";
 
-import gallery26 from "./assets/gallery_26.jpg";
-import gallery27 from "./assets/gallery_27.jpg";
-import gallery28 from "./assets/gallery_28.jpg";
-import gallery29 from "./assets/gallery_29.jpg";
-import gallery30 from "./assets/gallery_30.jpg";
-import gallery31 from "./assets/gallery_31.jpg";
-import gallery32 from "./assets/gallery_32.jpg";
-import gallery33 from "./assets/gallery_33.jpg";
-import gallery34 from "./assets/gallery_34.jpg";
-import gallery35 from "./assets/gallery_35.jpg";
-import gallery36 from "./assets/gallery_36.jpg";
-import gallery37 from "./assets/gallery_37.jpg";
-import gallery38 from "./assets/gallery_38.jpg";
-import gallery39 from "./assets/gallery_39.jpg";
-import gallery40 from "./assets/gallery_40.jpg";
-import gallery41 from "./assets/gallery_41.jpg";
+import gallery26 from "./assets/gallery_26.webp";
+import gallery27 from "./assets/gallery_27.webp";
+import gallery28 from "./assets/gallery_28.webp";
+import gallery29 from "./assets/gallery_29.webp";
+import gallery30 from "./assets/gallery_30.webp";
+import gallery31 from "./assets/gallery_31.webp";
+import gallery32 from "./assets/gallery_32.webp";
+import gallery33 from "./assets/gallery_33.webp";
+import gallery34 from "./assets/gallery_34.webp";
+import gallery35 from "./assets/gallery_35.webp";
+import gallery36 from "./assets/gallery_36.webp";
+import gallery37 from "./assets/gallery_37.webp";
+import gallery38 from "./assets/gallery_38.webp";
+import gallery39 from "./assets/gallery_39.webp";
+import gallery40 from "./assets/gallery_40.webp";
+import gallery41 from "./assets/gallery_41.webp";
 
 // Images pré-composées 1920×1440 — photo nette centrée sur fond flouté sombre
 const GALLERY_PHOTOS = [
@@ -138,14 +138,15 @@ const CSS = `
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { background:var(--black); color:var(--white); font-family:var(--fb); overflow-x:hidden; line-height:1.6; }
+html { scroll-behavior:smooth; scroll-padding-top:72px; }
+body { background:var(--black); color:var(--white); font-family:var(--fb); overflow-x:hidden; line-height:1.6; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility; }
 a { color:inherit; text-decoration:none; }
-img { max-width:100%; display:block; }
-*:focus-visible { outline:2px solid var(--red); outline-offset:3px; }
-::-webkit-scrollbar { width:4px; }
+img { max-width:100%; display:block; height:auto; }
+*:focus-visible { outline:2px solid var(--red); outline-offset:3px; border-radius:2px; }
+::-webkit-scrollbar { width:6px; }
 ::-webkit-scrollbar-track { background:var(--dark); }
-::-webkit-scrollbar-thumb { background:var(--red); border-radius:2px; }
+::-webkit-scrollbar-thumb { background:var(--red); border-radius:3px; transition:background .2s; }
+::-webkit-scrollbar-thumb:hover { background:var(--red2); }
 
 /* ── NAV ── */
 .nav {
@@ -184,12 +185,14 @@ img { max-width:100%; display:block; }
   box-shadow:0 4px 20px rgba(192,57,43,.4);
 }
 .nav-cta:hover { background:var(--red2); transform:translateY(-2px); box-shadow:0 6px 24px rgba(192,57,43,.5); }
+.nav-cta:active { transform:translateY(0); }
 .burger { display:none; flex-direction:column; gap:5px; padding:8px; background:none; border:none; cursor:pointer; }
 .burger span { display:block; width:22px; height:2px; background:var(--white); transition:.3s; border-radius:1px; }
 .mob-menu {
-  display:none; position:fixed; inset:0; z-index:890;
-  background:var(--dark); padding-top:72px;
+  display:none; position:fixed; inset:0; z-index:895;
+  background:rgba(10,10,10,.98); backdrop-filter:blur(20px); padding-top:72px;
   flex-direction:column; align-items:center; justify-content:center; gap:24px;
+  overflow-y:auto; -webkit-overflow-scrolling:touch;
 }
 .mob-menu.open { display:flex; }
 .mob-btn {
@@ -214,6 +217,8 @@ img { max-width:100%; display:block; }
 .hero-bg {
   position:absolute; inset:0;
   background-size:cover; background-position:center;
+  will-change:transform;
+  transform:translateZ(0);
 }
 .hero-grad {
   position:absolute; inset:0;
@@ -253,9 +258,11 @@ img { max-width:100%; display:block; }
   padding:18px 44px; border:none; cursor:pointer;
   font-family:var(--fc); font-size:14px; font-weight:700;
   letter-spacing:3px; text-transform:uppercase;
-  transition:all .2s; display:inline-block;
+  transition:background .2s, transform .2s, box-shadow .2s; display:inline-block;
+  box-shadow:0 4px 16px rgba(192,57,43,.35);
 }
-.btn-red:hover { background:var(--red2); transform:translateY(-2px); }
+.btn-red:hover { background:var(--red2); transform:translateY(-2px); box-shadow:0 8px 24px rgba(192,57,43,.5); }
+.btn-red:active { transform:translateY(0); }
 .btn-ghost-white {
   color:#fff; background:none; border:none; border-bottom:1px solid rgba(255,255,255,.3);
   padding:18px 0; cursor:pointer;
@@ -584,7 +591,7 @@ footer { background:#000; color:#fff; padding:60px 0 32px; border-top:1px solid 
 .lightbox-counter {
   position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
   font-family:var(--fc); font-size:12px; font-weight:700;
-  letter-spacing:2px; color:rgba(255,255,255,.5);
+  letter-spacing:2px; color:rgba(255,255,255,.5); white-space:nowrap;
 }
 .lightbox-dots {
   position:absolute; bottom:44px; left:50%; transform:translateX(-50%);
@@ -673,6 +680,7 @@ footer { background:#000; color:#fff; padding:60px 0 32px; border-top:1px solid 
 .hero-urgence { display:flex; align-items:center; gap:10px; margin-bottom:32px; font-family:var(--fc); font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.7); }
 .hero-urgence-dot { width:8px; height:8px; border-radius:50%; background:#25D366; box-shadow:0 0 0 3px rgba(37,211,102,.25); animation:pulse 2s infinite; flex-shrink:0; }
 @keyframes pulse { 0%,100%{box-shadow:0 0 0 3px rgba(37,211,102,.25);} 50%{box-shadow:0 0 0 6px rgba(37,211,102,.1);} }
+.hero-urgence-dot { contain: strict; }
 
 /* ── SECTION INSCRIPTION RAPIDE ── */
 .inscription-strip { background:var(--red); padding:48px 0; }
@@ -708,13 +716,13 @@ img { max-width:100%; }
   .nav-links, .nav-cta { display:none; }
   .burger { display:flex; }
   .stats-bar { flex-wrap:wrap; }
-  .stat { min-width:50%; border-bottom:1px solid rgba(255,255,255,.06); }
+  .stat { min-width:50%; border-bottom:1px solid rgba(255,255,255,.06); padding:16px 12px; }
   .stat:nth-child(odd) { border-right:1px solid rgba(255,255,255,.06); }
   .stat:nth-child(even) { border-right:none; }
   .footer-grid { grid-template-columns:1fr; gap:36px; }
   .cta-strip-inner { flex-direction:column; align-items:flex-start; }
   .modal-panel { width:100vw; border-left:none; }
-  .hero-content { padding:0 20px 120px; }
+  .hero-content { padding:0 20px 140px; }
   .home-section-inner, .about-inner, .cta-strip-inner, .footer-inner { padding:0 20px; }
   .container { padding:0 20px; }
   .m-tarif-grid { grid-template-columns:1fr 1fr; }
@@ -1894,7 +1902,13 @@ export default function App() {
   const [moreOpen, setMoreOpen] = useState(false);
 
   useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 50);
+    let ticking = false;
+    const fn = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => { setScrolled(window.scrollY > 50); ticking = false; });
+        ticking = true;
+      }
+    };
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
@@ -1903,9 +1917,11 @@ export default function App() {
     document.body.style.overflow = (menuOpen || modal) ? "hidden" : "";
   }, [menuOpen, modal]);
 
-  // Fermer modal avec Escape
+  // Fermer modal avec Escape + navigation
   useEffect(() => {
-    const fn = e => { if (e.key === "Escape") setModal(null); };
+    const fn = e => {
+      if (e.key === "Escape") setModal(null);
+    };
     window.addEventListener("keydown", fn);
     return () => window.removeEventListener("keydown", fn);
   }, []);
@@ -1913,6 +1929,10 @@ export default function App() {
   // SEO
   useEffect(() => {
     document.documentElement.lang = "fr";
+    // Viewport
+    if(!document.querySelector('meta[name="viewport"]')){
+      const v=document.createElement("meta");v.name="viewport";v.content="width=device-width,initial-scale=1";document.head.appendChild(v);
+    }
     document.title = "SK TEAM JJB — Brazilian Jiu-Jitsu & Grappling à Clamart (92140)";
     const m = (n,c,p) => { const a=p?"property":"name"; let el=document.querySelector("meta["+a+"=\""+n+"\"]"); if(!el){el=document.createElement("meta");el.setAttribute(a,n);document.head.appendChild(el);} el.setAttribute("content",c); };
     m("description","SK TEAM JJB — Club de Brazilian Jiu-Jitsu, Grappling et Self-Défense à Clamart (92140). Ceinture noire 1er Dan IBJJF, affilié FFJDA & CFJJB. Cours adultes dès 15 ans. 1er cours d'essai gratuit.");
@@ -1921,7 +1941,13 @@ export default function App() {
     m("og:type","website",true); m("og:title","SK TEAM JJB — BJJ Clamart",true);
     m("og:description","Club BJJ à Clamart. Essai gratuit !",true);
     m("og:url","https://sk-team-bjj.vercel.app",true);
+    m("og:image","https://sk-team-bjj.vercel.app/og-image.jpg",true);
+    m("og:image:width","1200",true);
+    m("og:image:height","630",true);
     m("twitter:card","summary_large_image");
+    m("twitter:title","SK TEAM JJB — BJJ Clamart");
+    m("twitter:description","Club BJJ & Grappling à Clamart 92140. Essai gratuit !");
+    m("twitter:image","https://sk-team-bjj.vercel.app/og-image.jpg");
     let c=document.querySelector('link[rel="canonical"]');
     if(!c){c=document.createElement("link");c.rel="canonical";document.head.appendChild(c);}
     c.href="https://sk-team-bjj.vercel.app";
@@ -1956,8 +1982,8 @@ export default function App() {
     {id:"reglement",    l:"Règlement"},
   ];
 
-  const open = id => setModal(id);
-  const close = () => setModal(null);
+  const open = React.useCallback(id => setModal(id), []);
+  const close = React.useCallback(() => setModal(null), []);
 
   const CARDS = [
     {id:"disciplines",n:"01",icon:"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",t:"Disciplines",d:"Brazilian Jiu-Jitsu — Grappling — Self-Défense. Trois arts martiaux complémentaires pour progresser à votre rythme."},
