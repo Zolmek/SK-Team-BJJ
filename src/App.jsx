@@ -2206,4 +2206,26 @@ export default function App() {
             <div>
               <div className="footer-col-title">Navigation</div>
               <ul className="footer-links">
-                {NAV_ITEMS.map(({id,l}) => <li key={id}><button onClick={() => open(id)}>{l}</
+                {NAV_ITEMS.map(({id,l}) => <li key={id}><button onClick={() => open(id)}>{l}</button></li>)}
+                <li><button onClick={() => open("contact")}>Essai gratuit</button></li>
+              </ul>
+            </div>
+            <div>
+              <div className="footer-col-title">Contact</div>
+              <ul className="footer-links">
+                <li><a href="mailto:sk.team.jjb@gmail.com">sk.team.jjb@gmail.com</a></li>
+                <li className="plain">Clamart · 92140</li>
+                <li className="plain">Hauts-de-Seine</li>
+                <li style={{marginTop:14}}><a href="https://www.instagram.com/skteamjjb" target="_blank" rel="noopener noreferrer">Instagram @skteamjjb</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="footer-bottom">
+            <p className="footer-copy">© 2025–2026 SK TEAM JJB — Association loi 1901 · Clamart (92140)</p>
+            <p className="footer-copy">Tous droits réservés</p>
+          </div>
+        </div>
+      </footer>
+    </>
+  );
+}
