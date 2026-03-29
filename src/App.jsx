@@ -5,7 +5,7 @@ import "./App.css";
 
 import skLogo     from "./assets/logo.png";
 import coachPhoto from "./assets/coach.webp";
-import imgHero    from "./assets/hero.webp";
+import heroVideo  from "./assets/hero.mp4";
 import imgDisc    from "./assets/disc.webp";
 import imgAction  from "./assets/action.webp";
 import imgCta     from "./assets/cta.webp";
@@ -56,7 +56,7 @@ import gallery40 from "./assets/gallery_40.webp";
 import gallery41 from "./assets/gallery_41.webp";
 
 export const IMG = {
-  coach: coachPhoto, melqui: imgMelqui, mika: imgMika, hero: imgHero,
+  coach: coachPhoto, melqui: imgMelqui, mika: imgMika,
   disc: imgDisc, action: imgAction, cta: imgCta,
 };
 
@@ -573,11 +573,21 @@ export default function App() {
         <button className="mob-cta-btn" onClick={() => { setMenuOpen(false); setTimeout(() => open("contact"), 100); }}>Essai Gratuit</button>
       </div>
 
-      <section id="hero" style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "flex-end", overflow: "hidden" }}>
-        <div
-          className="hero-bg"
-          style={{ backgroundImage: `url(${IMG.hero})` }}
-        />
+      <section id="hero" style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "flex-end", overflow: "hidden", background: "#000" }}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{
+            position: "absolute", inset: 0,
+            width: "100%", height: "100%",
+            objectFit: "contain",
+            zIndex: 0,
+          }}
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
         <div className="hero-grad" />
         <div className="hero-content">
           <div className="hero-eyebrow">Clamart · Hauts-de-Seine · 92140</div>
