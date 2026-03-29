@@ -4,7 +4,7 @@ import { IMG } from "../App";
 export default function ModalCoach({ open, onClose }) {
   return (
     <ModalWrapper open={open} onClose={onClose} title="LE COACH">
-      <img className="modal-hero-img" src={IMG.action} alt="Karim Sadat en action — coach BJJ Ceinture Noire IBJJF SK TEAM JJB" style={{objectPosition:"center"}} loading="lazy"/>
+      <img className="modal-hero-img" src={IMG.action} alt="Karim Sadat en action — coach BJJ Ceinture Noire IBJJF SK TEAM JJB" style={{objectPosition:"center 30%"}} loading="lazy"/>
       <div className="modal-body">
         <div className="m-tag">Votre coach</div>
         <h2 className="m-h2">KARIM<br/>SADAT</h2>
