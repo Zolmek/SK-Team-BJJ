@@ -55,7 +55,7 @@ export default function ModalDisciplines({ open, onClose, openContact }) {
         ))}
         <div className="m-cta">
           <button className="btn-red" onClick={() => { onClose(); setTimeout(openContact, 200); }}>
-            Réserver mon essai gratuit
+            Réserver ton essai
           </button>
         </div>
       </div>
