@@ -5,7 +5,7 @@ import "./App.css";
 
 import skLogo     from "./assets/logo.png";
 import coachPhoto from "./assets/coach.webp";
-import heroVideo  from "./assets/hero.mp4";
+import imgHero    from "./assets/hero.webp";
 import imgDisc    from "./assets/disc.webp";
 import imgAction  from "./assets/action.webp";
 import imgCta     from "./assets/cta.webp";
@@ -57,7 +57,7 @@ import gallery41 from "./assets/gallery_41.webp";
 
 export const IMG = {
   coach: coachPhoto, melqui: imgMelqui, mika: imgMika,
-  disc: imgDisc, action: imgAction, cta: imgCta,
+  hero: imgHero, disc: imgDisc, action: imgAction, cta: imgCta,
 };
 
 const GALLERY_PHOTOS = [
@@ -264,10 +264,10 @@ function HomeSlider({ photos }) {
         <div className="home-slider-cap">{photos[slide].cap}</div>
         <div className="home-slider-sub">{photos[slide].sub}</div>
       </div>
-      <button className="home-slider-prev" onClick={() => goTo(s => (s - 1 + photos.length) % photos.length)} aria-label="Photo précédente">&#8249;</button>
-      <button className="home-slider-next" onClick={() => goTo(s => (s + 1) % photos.length)} aria-label="Photo suivante">&#8250;</button>
+      <button className="home-slider-prev" onClick={() => goTo(s => (s - 1 + photos.length) % photos.length)} aria-label="Photo précédente">‹</button>
+      <button className="home-slider-next" onClick={() => goTo(s => (s + 1) % photos.length)} aria-label="Photo suivante">›</button>
       <div className="home-slider-counter" aria-hidden="true">{slide + 1} / {photos.length}</div>
-      {paused && <div className="home-slider-pause">Pause</div>}
+      {paused && <div className="home-slider-pause">⏸ Pause</div>}
       <CompactDots total={photos.length} current={slide} onSelect={goTo} className="home-slider-dots" />
       <div className="home-slider-progress" style={{ width: `${progress}%` }} aria-hidden="true" />
     </div>
@@ -295,16 +295,16 @@ function InscriptionStrip() {
         <div className="inscription-text">
           <h2>1ER COURS<br />GRATUIT</h2>
           <p>Sans engagement · Clamart (92140)<br />Adultes, Ados, Kids — tous niveaux</p>
-          <div style={{ color: "#FFD700", fontFamily: "var(--fc)", fontSize: 11, marginTop: 8 }}>Places limitées</div>
+          <div style={{ color: "#FFD700", fontFamily: "var(--fc)", fontSize: 11, marginTop: 8 }}>⚡ Rentrée 2025 — Places limitées</div>
         </div>
         {sent ? (
-          <div className="inscription-success">Message envoyé — on vous recontacte rapidement !</div>
+          <div className="inscription-success">✓ Message envoyé — on vous recontacte rapidement !</div>
         ) : (
           <div className="inscription-form">
             <input className="inscription-input" placeholder="Votre prénom" value={nom} onChange={e => setNom(e.target.value)} />
             <input className="inscription-input" placeholder="Votre téléphone" value={tel} onChange={e => setTel(e.target.value)} type="tel" />
             <button className="inscription-btn" onClick={handleSubmit} disabled={sending}>
-              {sending ? "Envoi..." : "Je réserve"}
+              {sending ? "Envoi..." : "Je réserve →"}
             </button>
           </div>
         )}
@@ -341,15 +341,15 @@ function ModalContactInline({ open, onClose }) {
   };
 
   return (
-    <ModalWrapper open={open} onClose={onClose} title="ESSAI GRATUIT">
+    <ModalWrapper open={open} onClose={onClose} title="RÉSERVE TA SÉANCE">
       <div className="modal-body">
         <div className="m-tag">Rejoindre le club</div>
-        <h2 className="m-h2">PRET A<br />COMMENCER ?</h2>
+        <h2 className="m-h2">PRÊT À<br />COMMENCER ?</h2>
         <div className="m-divider" />
         <p className="m-text">Premier cours d'essai gratuit, sans engagement. Venez découvrir le JJB à Clamart.</p>
         {sent ? (
           <div style={{ padding: "24px", background: "rgba(37,211,102,.08)", border: "1px solid rgba(37,211,102,.3)", textAlign: "center" }}>
-            <div style={{ fontFamily: "var(--fd)", fontSize: 32, color: "#25D366", marginBottom: 8 }}>OK</div>
+            <div style={{ fontFamily: "var(--fd)", fontSize: 32, color: "#25D366", marginBottom: 8 }}>✓</div>
             <div style={{ fontFamily: "var(--fc)", fontSize: 13, fontWeight: 700, letterSpacing: "2px", textTransform: "uppercase", color: "var(--white)" }}>Message envoyé !</div>
             <p style={{ fontSize: 13, color: "rgba(255,255,255,.55)", marginTop: 8 }}>Karim vous recontactera dans les 24h.</p>
           </div>
@@ -371,7 +371,7 @@ function ModalContactInline({ open, onClose }) {
             </select>
             <textarea className="m-input m-textarea" name="message" placeholder="Message (optionnel)" value={form.message} onChange={handleChange} />
             <button type="submit" className="m-submit" disabled={sending}>
-              {sending ? "Envoi en cours..." : "Envoyer ma demande d'essai"}
+              {sending ? "Envoi en cours..." : "Envoyer ma demande"}
             </button>
           </form>
         )}
@@ -414,6 +414,14 @@ export default function App() {
   }, [modal]);
 
   useEffect(() => {
+    const link = document.createElement("link");
+    link.rel = "preload"; link.as = "image"; link.href = imgHero;
+    link.setAttribute("fetchpriority", "high");
+    document.head.appendChild(link);
+    return () => document.head.removeChild(link);
+  }, []);
+
+  useEffect(() => {
     document.documentElement.lang = "fr";
     document.title = "SK TEAM JJB — Brazilian Jiu-Jitsu & Grappling à Clamart (92140)";
     const setMeta = (name, content, isProp = false) => {
@@ -422,21 +430,21 @@ export default function App() {
       if (!el) { el = document.createElement("meta"); el.setAttribute(attr, name); document.head.appendChild(el); }
       el.setAttribute("content", content);
     };
-    setMeta("description", "SK TEAM JJB — Club de Brazilian Jiu-Jitsu, Grappling et Self-Défense à Clamart (92140). Ceinture noire 1er Dan IBJJF, affilié FFJDA et CFJJB. 1er cours d'essai gratuit.");
+    setMeta("description", "SK TEAM JJB — Club de Brazilian Jiu-Jitsu, Grappling et Self-Défense à Clamart (92140). Ceinture noire 1er Dan IBJJF, affilié FFJDA & CFJJB. 1er cours d'essai gratuit.");
     setMeta("robots", "index, follow");
     setMeta("og:type", "website", true);
     setMeta("og:title", "SK TEAM JJB — BJJ Clamart", true);
     setMeta("og:description", "Club BJJ à Clamart. Essai gratuit !", true);
-    setMeta("og:url", "https://sk-team-jjb.vercel.app", true);
-    setMeta("og:image", "https://sk-team-jjb.vercel.app/og-image.jpg", true);
+    setMeta("og:url", "https://sk-team-bjj.vercel.app", true);
+    setMeta("og:image", "https://sk-team-bjj.vercel.app/og-image.jpg", true);
     let canonical = document.querySelector('link[rel="canonical"]');
     if (!canonical) { canonical = document.createElement("link"); canonical.rel = "canonical"; document.head.appendChild(canonical); }
-    canonical.href = "https://sk-team-jjb.vercel.app";
+    canonical.href = "https://sk-team-bjj.vercel.app";
     let schema = document.getElementById("schema-org");
     if (!schema) { schema = document.createElement("script"); schema.id = "schema-org"; schema.type = "application/ld+json"; document.head.appendChild(schema); }
     schema.textContent = JSON.stringify({
       "@context": "https://schema.org", "@type": ["SportsClub", "LocalBusiness"],
-      "name": "SK TEAM JJB", "url": "https://sk-team-jjb.vercel.app",
+      "name": "SK TEAM JJB", "url": "https://sk-team-bjj.vercel.app",
       "email": "sk.team.jjb@gmail.com", "telephone": "+33650054954",
       "address": { "@type": "PostalAddress", "streetAddress": "26 rue de Normandie", "addressLocality": "Clamart", "postalCode": "92140", "addressCountry": "FR" },
       "founder": { "@type": "Person", "name": "Karim Sadat", "jobTitle": "Directeur Technique — Ceinture Noire 1er Dan IBJJF" },
@@ -463,12 +471,12 @@ export default function App() {
     { id: "disciplines", n: "01", icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z", t: "Disciplines", d: "Brazilian Jiu-Jitsu — Grappling — Self-Défense. Trois arts martiaux complémentaires pour progresser à votre rythme." },
     { id: "coach", n: "02", icon: "M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2 M12 11a4 4 0 100-8 4 4 0 000 8z", t: "Le Coach", d: "Karim Sadat, ceinture noire 1er Dan IBJJF, 13 ans de pratique, 2 000+ heures d'enseignement." },
     { id: "programme", n: "03", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2 M9 5a2 2 0 002 2h2a2 2 0 002-2 M9 5a2 2 0 012-2h2a2 2 0 012 2", t: "Programme", d: "34 séances structurées sur 3 mésocycles selon le référentiel SK TEAM BJJ. Adultes débutants 15+." },
-    { id: "horaires", n: "04", icon: "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 6v6l4 2", t: "Horaires & Tarifs", d: "Lundi et Mercredi 19h30–20h30. Tarifs à partir de 200 euros par an. 1er cours d'essai gratuit." },
-    { id: "club", n: "05", icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75", t: "Le Club", d: "Association loi 1901, affiliée FFJDA et CFJJB, fondée à Clamart. Un cadre structuré et bienveillant pour tous les niveaux." },
-    { id: "kids", n: "06", icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75", t: "Kids & Ados", d: "BJJ pour les 6 à 17 ans. 3 groupes : Mini (6-9), Junior (10-14), Ados (15-17)." },
+    { id: "horaires", n: "04", icon: "M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z M12 6v6l4 2", t: "Horaires & Tarifs", d: "Lundi et Mercredi 19h30–20h30. Tarifs à partir de 200€/an. 1er cours d'essai gratuit." },
+    { id: "club", n: "05", icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75", t: "Le Club", d: "Association loi 1901, affiliée FFJDA & CFJJB, fondée à Clamart. Un cadre structuré et bienveillant pour tous les niveaux." },
+    { id: "kids", n: "06", icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2 M23 21v-2a4 4 0 00-3-3.87 M16 3.13a4 4 0 010 7.75", t: "Kids & Ados", d: "BJJ pour les 6–17 ans. 3 groupes : Mini (6-9), Junior (10-14), Ados (15-17)." },
     { id: "reglement", n: "07", icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2 M9 5a2 2 0 002 2h2a2 2 0 002-2 M9 5a2 2 0 012-2h2a2 2 0 012 2 M12 12h.01 M12 16h.01", t: "Règlement", d: "Hygiène, tenues, respect, ponctualité, sécurité. Les règles qui s'appliquent à tous les membres." },
     { id: "competiteur", n: "08", icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z", t: "Programme Compétiteur", d: "Périodisation 3 phases : volume, intensification, affûtage pré-compétition." },
-    { id: "prepphysique", n: "09", icon: "M22 12h-4l-3 9L9 3l-3 9H2", t: "Préparation Physique", d: "4 programmes : Force et Explosivité, Endurance spécifique, Mobilité et Récupération, Circuit tatami." },
+    { id: "prepphysique", n: "09", icon: "M22 12h-4l-3 9L9 3l-3 9H2", t: "Préparation Physique", d: "4 programmes : Force & Explosivité, Endurance spécifique, Mobilité & Récupération, Circuit tatami." },
     { id: "contact", n: "10", icon: "M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z", t: "Essai Gratuit", d: "Premier cours gratuit, sans engagement. Venez découvrir le JJB à Clamart." },
   ], []);
 
@@ -529,7 +537,7 @@ export default function App() {
             ))}
             <li role="none">
               <div className={`nav-more-wrap${moreOpen ? " open" : ""}`} onMouseEnter={() => setMoreOpen(true)} onMouseLeave={() => setMoreOpen(false)}>
-                <button className={`nav-btn${NAV_MORE.some(x => x.id === modal) ? " active" : ""}`} onClick={() => setMoreOpen(o => !o)} aria-haspopup="true" aria-expanded={moreOpen} role="menuitem">Plus</button>
+                <button className={`nav-btn${NAV_MORE.some(x => x.id === modal) ? " active" : ""}`} onClick={() => setMoreOpen(o => !o)} aria-haspopup="true" aria-expanded={moreOpen} role="menuitem">Plus ▾</button>
                 <div className="nav-more-dropdown" role="menu">
                   {NAV_MORE.map(({ id, l }) => (
                     <button key={id} className={`nav-more-item${modal === id ? " active" : ""}`} onClick={() => { setMoreOpen(false); open(id); }} onMouseEnter={() => prefetchModal(id)} role="menuitem">{l}</button>
@@ -574,25 +582,12 @@ export default function App() {
       </div>
 
       <section id="hero" style={{ position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "flex-end", overflow: "hidden" }}>
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          style={{
-            position: "absolute", inset: 0,
-            width: "100%", height: "100%",
-            objectFit: "cover",
-            zIndex: 0,
-          }}
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
+        <div className="hero-bg" style={{ backgroundImage: `url(${IMG.hero})` }} />
         <div className="hero-grad" />
         <div className="hero-content">
           <div className="hero-eyebrow">Clamart · Hauts-de-Seine · 92140</div>
           <h1 className="hero-h1"><em>BRAZILIAN</em>JIU-JITSU</h1>
-          <p className="hero-desc">Club associatif affilié FFJDA et CFJJB, fondé à Clamart. Adultes débutants et compétiteurs — encadrés par un ceinture noire 1er Dan IBJJF.</p>
+          <p className="hero-desc">Club associatif affilié FFJDA & CFJJB, fondé à Clamart. Adultes débutants et compétiteurs — encadrés par un ceinture noire 1<sup>er</sup> Dan IBJJF.</p>
           <div className="hero-urgence">
             <span className="hero-urgence-dot" />
             Inscriptions ouvertes — 1er cours gratuit
@@ -612,12 +607,12 @@ export default function App() {
       <section className="testi-bar">
         <div className="testi-inner">
           {[
-            { t: "Karim a fait une immersion au Brésil chez Melqui Galvão. Sa pédagogie est claire, progressive et exigeante.", n: "Thomas R.", d: "Ceinture bleue · Élève depuis 6 mois" },
-            { t: "Ambiance familiale, technique solide. Karim s'adapte à chaque niveau. Le meilleur club BJJ de Clamart.", n: "Mehdi L.", d: "Élève depuis 1 an" },
-            { t: "J'ai commencé à zéro. En 6 mois j'ai progressé plus vite qu'en 2 ans dans ma salle précédente.", n: "Sébastien M.", d: "Débutant · Saison 2025" },
+            { t: "\u201cKarim a fait une immersion au Brésil chez Melqui Galvão. Sa pédagogie est claire, progressive et exigeante.\u201d", n: "Thomas R.", d: "Ceinture bleue · Élève depuis 6 mois" },
+            { t: "\u201cAmbiance familiale, technique solide. Karim s'adapte à chaque niveau. Le meilleur club BJJ de Clamart.\u201d", n: "Mehdi L.", d: "Élève depuis 1 an" },
+            { t: "\u201cJ'ai commencé à zéro. En 6 mois j'ai progressé plus vite qu'en 2 ans dans ma salle précédente.\u201d", n: "Sébastien M.", d: "Débutant · Saison 2025" },
           ].map(item => (
             <div key={item.n} className="testi-item">
-              <div className="testi-stars">5 étoiles</div>
+              <div className="testi-stars">★★★★★</div>
               <blockquote className="testi-text">{item.t}</blockquote>
               <div className="testi-header">
                 <div className="testi-avatar">{item.n[0]}</div>
@@ -641,7 +636,7 @@ export default function App() {
                 <div className="card-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d={c.icon} /></svg></div>
                 <div className="card-title">{c.t}</div>
                 <p className="card-desc">{c.d}</p>
-                <div className="card-arrow">Voir</div>
+                <div className="card-arrow">Voir →</div>
               </button>
             ))}
           </div>
@@ -651,7 +646,7 @@ export default function App() {
       <section style={{ background: "var(--dark)", borderTop: "1px solid var(--border)", padding: "60px 0" }}>
         <div className="home-section-inner">
           <div className="home-section-tag">Immersion Brésil</div>
-          <h2 className="home-section-title" style={{ marginBottom: 0 }}>IMMERSION<br />BRESIL</h2>
+          <h2 className="home-section-title" style={{ marginBottom: 0 }}>IMMERSION<br />BRÉSIL</h2>
           <HomeSlider photos={GALLERY_PHOTOS} />
         </div>
       </section>
@@ -685,7 +680,7 @@ export default function App() {
         <div className="cta-strip-top" />
         <div className="cta-strip-inner">
           <div>
-            <h2 className="cta-strip-h2">PRET A<br />COMMENCER ?</h2>
+            <h2 className="cta-strip-h2">PRÊT À<br />COMMENCER ?</h2>
             <p className="cta-strip-sub">Premier cours d'essai gratuit, sans engagement. Venez découvrir le JJB à Clamart dans une ambiance technique et bienveillante.</p>
           </div>
           <button className="btn-white" onClick={() => open("contact")}>Réserver mon essai</button>
@@ -704,7 +699,7 @@ export default function App() {
           <div className="footer-grid">
             <div>
               <div className="footer-logo"><SKLogo size={36} /><span className="footer-logo-name">SK TEAM JJB</span></div>
-              <p className="footer-tagline">Brazilian Jiu-Jitsu, Grappling et Self-Défense à Clamart (92140). Association loi 1901, affiliée FFJDA et CFJJB.</p>
+              <p className="footer-tagline">Brazilian Jiu-Jitsu, Grappling & Self-Défense à Clamart (92140). Association loi 1901, affiliée FFJDA & CFJJB.</p>
               <div className="footer-affil">{["FFJDA", "CFJJB", "IBJJF", "FFL", "Loi 1901"].map(b => <span key={b} className="footer-badge">{b}</span>)}</div>
               <a href="https://www.instagram.com/skteamjjb" target="_blank" rel="noopener noreferrer" className="social-link" style={{ marginTop: 16, display: "inline-flex" }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
@@ -729,7 +724,7 @@ export default function App() {
             </div>
           </div>
           <div className="footer-bottom">
-            <p className="footer-copy">2025-2026 SK TEAM JJB — Association loi 1901 · Clamart (92140)</p>
+            <p className="footer-copy">© 2025–2026 SK TEAM JJB — Association loi 1901 · Clamart (92140)</p>
             <p className="footer-copy">Tous droits réservés</p>
           </div>
         </div>
