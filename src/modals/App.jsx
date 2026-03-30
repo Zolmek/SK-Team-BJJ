@@ -5,6 +5,7 @@ import "./App.css";
 
 import skLogo     from "./assets/logo.png";
 import coachPhoto from "./assets/coach.webp";
+import heroVideo  from "./assets/hero.mp4";
 import imgDisc    from "./assets/disc.webp";
 import imgAction  from "./assets/action.webp";
 import imgCta     from "./assets/cta.webp";
@@ -591,7 +592,7 @@ export default function App() {
             zIndex: 0,
           }}
         >
-          <source src="/hero.mp4" type="video/mp4" />
+          <source src={heroVideo} type="video/mp4" />
         </video>
         <div className="hero-grad" />
         <div className="hero-content">
