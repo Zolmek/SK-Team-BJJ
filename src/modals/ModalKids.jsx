@@ -62,12 +62,12 @@ export default function ModalKids({ open, onClose, openContact }) {
             <li>Groupes homogènes par tranches d'âge</li>
             <li>Licence FFJDA / CFJJB obligatoire (assurance incluse)</li>
             <li>Tarifs spéciaux famille disponibles</li>
-            <li>1er cours d'essai gratuit</li>
+            <li>Première séance à 10€</li>
           </ul>
         </div>
         <div className="m-cta">
           <button className="btn-red" onClick={() => { onClose(); setTimeout(openContact, 200); }}>
-            Réserver un essai gratuit
+            Réserve ton essai
           </button>
         </div>
       </div>

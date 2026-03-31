@@ -53,7 +53,7 @@ export default function ModalContact({ open, onClose }) {
         <div className="m-tag">Rejoindre le club</div>
         <h2 className="m-h2">PRÊT À<br/>COMMENCER ?</h2>
         <div className="m-divider"/>
-        <p className="m-text">Premier cours d'essai gratuit, sans engagement. Venez découvrir le JJB dans une ambiance technique et bienveillante à Clamart.</p>
+        <p className="m-text">Première séance à 10€, sans engagement. Venez découvrir le BJJ à Clamart dans une ambiance bienveillante et structurée.</p>
 
         {sent ? (
           <div role="status" style={{padding:"24px",background:"rgba(37,211,102,.08)",border:"1px solid rgba(37,211,102,.3)",textAlign:"center"}}>
