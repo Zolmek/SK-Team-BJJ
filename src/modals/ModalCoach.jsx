@@ -6,7 +6,7 @@ const DIPLOMES = [
     icon: "M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z",
     titre: "Ceinture Noire 1er Dan — BJJ",
     organisme: "IBJJF / CFJJB",
-    date: "2024",
+    date: "21 novembre 2025 — États-Unis",
     couleur: "#C0392B",
   },
   {
